@@ -1,0 +1,601 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Calendar对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Calendar1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础IO输入输出04">
+<meta property="og:url" content="http://yoursite.com/2016/11/16/Java基础IO输入输出04/index.html">
+<meta property="og:site_name" content="新的篇章">
+<meta property="og:description" content="Calendar对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Calendar1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-11-16T15:49:31.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础IO输入输出04">
+<meta name="twitter:description" content="Calendar对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Calendar1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/16/Java基础IO输入输出04/"/>
+
+  <title> Java基础IO输入输出04 | 新的篇章 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">新的篇章</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础IO输入输出04
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-16T21:58:03+08:00" content="2016-11-16">
+              2016-11-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/16/Java基础IO输入输出04/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出04/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Calendar对象"><a href="#Calendar对象" class="headerlink" title="Calendar对象"></a>Calendar对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
+<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+</blockquote>
+<h2 id="类Calendar"><a href="#类Calendar" class="headerlink" title="类Calendar"></a>类Calendar</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Calendar对象</div><div class="line">另请参见：</div><div class="line">DateFormat、Calendar、TimeZone</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">import java.text.*;</div><div class="line">class CalendarDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        </div><div class="line">        //方法一：</div><div class="line">        Date d = new Date();</div><div class="line">        SimpleDateFormat sdf = new SimpleDateFormat(<span class="string">"yyyy"</span>);</div><div class="line">        String year =  sdf.format(d);//返回的是字符串，我想加一年或减一年比较麻烦</div><div class="line">        System.out.println(year);</div><div class="line">        </div><div class="line">        //方法二：</div><div class="line">        Calendar c = Calendar.getInstance();</div><div class="line">        </div><div class="line">        //用查表法来改写</div><div class="line">        String[] mons = &#123;<span class="string">"一月"</span>,<span class="string">"二月"</span>,<span class="string">"三月"</span>,<span class="string">"四月"</span>,<span class="string">"五月"</span>,<span class="string">"六月"</span>,<span class="string">"七月"</span>,<span class="string">"八月"</span>,<span class="string">"九月"</span>,<span class="string">"十月"</span>,<span class="string">"十一月"</span>,<span class="string">"十二月"</span>&#125;;</div><div class="line">        int index = c.get(Calendar.MONTH);</div><div class="line">        </div><div class="line">        String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>,<span class="string">"星期日"</span>&#125;;</div><div class="line">        int index1 = c.get(Calendar.DAY_OF_WEEK);</div><div class="line">        </div><div class="line">        sop(c.get(Calendar.YEAR)+<span class="string">"年"</span>);</div><div class="line">        //sop((c.get(Calendar.MONTH)+1)+<span class="string">"月"</span>);</div><div class="line">        sop(mons[index]);</div><div class="line">        sop(c.get(Calendar.DAY_OF_MONTH)+<span class="string">"日"</span>);</div><div class="line">        //sop(<span class="string">"星期"</span>+c.get(Calendar.DAY_OF_WEEK));</div><div class="line">        sop(weeks[index1]);</div><div class="line">        </div><div class="line">        //一些方法</div><div class="line">        Calendar c1 = Calendar.getInstance();</div><div class="line">        //c1.set(2012,2,23);</div><div class="line">        //时间量的偏移</div><div class="line">        c1.add(Calendar.YEAR,4);//加4年</div><div class="line">        printCalendar(c1);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void sop(Object obj)&#123;</div><div class="line">        System.out.println(obj);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void printCalendar(Calendar c)&#123;</div><div class="line">        //用查表法来改写</div><div class="line">                String[] mons = &#123;<span class="string">"一月"</span>,<span class="string">"二月"</span>,<span class="string">"三月"</span>,<span class="string">"四月"</span>,<span class="string">"五月"</span>,<span class="string">"六月"</span>,<span class="string">"七月"</span>,<span class="string">"八月"</span>,<span class="string">"九月"</span>,<span class="string">"十月"</span>,<span class="string">"十一月"</span>,<span class="string">"十二月"</span>&#125;;</div><div class="line">                int index = c.get(Calendar.MONTH);</div><div class="line">                </div><div class="line">                String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>,<span class="string">"星期日"</span>&#125;;</div><div class="line">                int index1 = c.get(Calendar.DAY_OF_WEEK);</div><div class="line">                </div><div class="line">                sop(c.get(Calendar.YEAR)+<span class="string">"年"</span>);</div><div class="line">                //sop((c.get(Calendar.MONTH)+1)+<span class="string">"月"</span>);</div><div class="line">                sop(mons[index]);</div><div class="line">                sop(c.get(Calendar.DAY_OF_MONTH)+<span class="string">"日"</span>);</div><div class="line">                //sop(<span class="string">"星期"</span>+c.get(Calendar.DAY_OF_WEEK));</div><div class="line">                sop(weeks[index1]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/Java基础IO输入输出03/" rel="next" title="Java基础IO输入输出03">
+                <i class="fa fa-chevron-left"></i> Java基础IO输入输出03
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/16/Java基础IO输入输出05/" rel="prev" title="Java基础IO输入输出05">
+                Java基础IO输入输出05 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/16/Java基础IO输入输出04/"
+           data-title="Java基础IO输入输出04" data-url="http://yoursite.com/2016/11/16/Java基础IO输入输出04/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="北辰" />
+          <p class="site-author-name" itemprop="name">北辰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Calendar对象"><span class="nav-number">1.</span> <span class="nav-text">Calendar对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导语："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">导语：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类Calendar"><span class="nav-number">1.1.</span> <span class="nav-text">类Calendar</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zengquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

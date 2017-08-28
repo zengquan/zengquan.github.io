@@ -84,25 +84,17 @@
 
 
 
-<meta name="description" content="System对象导语：
-学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下，用什么对象就可以了。
-
-类System没有提供构造函数，getProperties()获取当前的系统属性。123456789101112131415161718/*System：类中的方法和属性都是静态的。out：标准输出，默认是控制台。in：标准输入，默认是键">
+<meta name="description" content="System对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类System没有提供构造函数，getProperties()获取当前的系统属性。123456789101112131415161718/*System：类中的方法和属性都是静态的。out：标准输出，默认是控制台。in：标准输入，默认是键盘">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java对象System">
 <meta property="og:url" content="http://yoursite.com/2016/08/28/Java对象System/index.html">
 <meta property="og:site_name" content="新的篇章">
-<meta property="og:description" content="System对象导语：
-学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下，用什么对象就可以了。
-
-类System没有提供构造函数，getProperties()获取当前的系统属性。123456789101112131415161718/*System：类中的方法和属性都是静态的。out：标准输出，默认是控制台。in：标准输入，默认是键">
-<meta property="og:updated_time" content="2016-08-28T17:08:30.719Z">
+<meta property="og:description" content="System对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类System没有提供构造函数，getProperties()获取当前的系统属性。123456789101112131415161718/*System：类中的方法和属性都是静态的。out：标准输出，默认是控制台。in：标准输入，默认是键盘">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-11-16T13:40:03.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java对象System">
-<meta name="twitter:description" content="System对象导语：
-学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下，用什么对象就可以了。
-
-类System没有提供构造函数，getProperties()获取当前的系统属性。123456789101112131415161718/*System：类中的方法和属性都是静态的。out：标准输出，默认是控制台。in：标准输入，默认是键">
+<meta name="twitter:description" content="System对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类System没有提供构造函数，getProperties()获取当前的系统属性。123456789101112131415161718/*System：类中的方法和属性都是静态的。out：标准输出，默认是控制台。in：标准输入，默认是键盘">
 
 
 
@@ -303,7 +295,7 @@
 
       
         <h1 id="System对象"><a href="#System对象" class="headerlink" title="System对象"></a>System对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
-<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下，用什么对象就可以了。</p>
+<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
 </blockquote>
 <h2 id="类System"><a href="#类System" class="headerlink" title="类System"></a>类System</h2><p>没有提供构造函数，getProperties()获取当前的系统属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">System：类中的方法和属性都是静态的。</div><div class="line">out：标准输出，默认是控制台。</div><div class="line"><span class="keyword">in</span>：标准输入，默认是键盘</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">class SystemDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Properties prop = System.getProperties();</div><div class="line">        //因为Properties 是Hashtable的子类，也就是Map集合的一个子对象.</div><div class="line">        //那么可以通过map的方法取出该集合中的对象</div><div class="line">        //该集合中存储都是字符串，没有泛型定义。</div><div class="line">        <span class="keyword">for</span>(Object obj : prop.keySet())&#123;</div><div class="line">            String value = prop.get(obj);</div><div class="line">            System.out.println(obj + <span class="string">"::"</span> + balue);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
@@ -412,13 +404,20 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -463,7 +462,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

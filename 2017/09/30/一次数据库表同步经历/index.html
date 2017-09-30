@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="工作事件," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="Runtime对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Runtime 没有提供构造函数：代表它不能直接创建对象 它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。  1">
-<meta name="keywords" content="Java">
+<meta name="description" content="事件背景：同步组织人员数据任务描述： 业务系统中的 单位、部门、人员、身份 来源于统一认证组织机构人员管控平台  原来方案：自定义一个日期 startTime ，从 startTime 到当前的这段时间内的所有数据变动（增删改），打成压缩包发送过来、解压、处理数据、删除压缩包  优点：统一认证组织机构人员管控平台上的数据保证正确性，其它系统从日志来，所有的操作都有记录  缺点：  startTim">
+<meta name="keywords" content="工作事件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础IO输入输出02">
-<meta property="og:url" content="http://yoursite.com/2016/11/16/Java基础IO输入输出02/index.html">
+<meta property="og:title" content="一次数据库表同步经历">
+<meta property="og:url" content="http://yoursite.com/2017/09/30/一次数据库表同步经历/index.html">
 <meta property="og:site_name" content="新的篇章">
-<meta property="og:description" content="Runtime对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Runtime 没有提供构造函数：代表它不能直接创建对象 它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。  1">
+<meta property="og:description" content="事件背景：同步组织人员数据任务描述： 业务系统中的 单位、部门、人员、身份 来源于统一认证组织机构人员管控平台  原来方案：自定义一个日期 startTime ，从 startTime 到当前的这段时间内的所有数据变动（增删改），打成压缩包发送过来、解压、处理数据、删除压缩包  优点：统一认证组织机构人员管控平台上的数据保证正确性，其它系统从日志来，所有的操作都有记录  缺点：  startTim">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-11-16T15:49:15.593Z">
+<meta property="og:updated_time" content="2017-09-30T09:11:13.605Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础IO输入输出02">
-<meta name="twitter:description" content="Runtime对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Runtime 没有提供构造函数：代表它不能直接创建对象 它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。  1">
+<meta name="twitter:title" content="一次数据库表同步经历">
+<meta name="twitter:description" content="事件背景：同步组织人员数据任务描述： 业务系统中的 单位、部门、人员、身份 来源于统一认证组织机构人员管控平台  原来方案：自定义一个日期 startTime ，从 startTime 到当前的这段时间内的所有数据变动（增删改），打成压缩包发送过来、解压、处理数据、删除压缩包  优点：统一认证组织机构人员管控平台上的数据保证正确性，其它系统从日志来，所有的操作都有记录  缺点：  startTim">
 
 
 
@@ -116,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/16/Java基础IO输入输出02/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/30/一次数据库表同步经历/"/>
 
-  <title> Java基础IO输入输出02 | 新的篇章 </title>
+  <title> 一次数据库表同步经历 | 新的篇章 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +248,7 @@
             
             
               
-                Java基础IO输入输出02
+                一次数据库表同步经历
               
             
           </h1>
@@ -260,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T21:57:19+08:00" content="2016-11-16">
-              2016-11-16
+            <time itemprop="dateCreated" datetime="2017-09-30T16:43:12+08:00" content="2017-09-30">
+              2017-09-30
             </time>
           </span>
 
@@ -271,8 +271,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/16/Java基础IO输入输出02/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出02/" itemprop="commentsCount"></span>
+                <a href="/2017/09/30/一次数据库表同步经历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/30/一次数据库表同步经历/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,14 +295,24 @@
       
 
       
-        <h1 id="Runtime对象"><a href="#Runtime对象" class="headerlink" title="Runtime对象"></a>Runtime对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
-<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+        <h1 id="事件背景：同步组织人员数据"><a href="#事件背景：同步组织人员数据" class="headerlink" title="事件背景：同步组织人员数据"></a>事件背景：同步组织人员数据</h1><h2 id="任务描述："><a href="#任务描述：" class="headerlink" title="任务描述："></a>任务描述：</h2><blockquote>
+<p>业务系统中的 <strong>单位、部门、人员、身份</strong> 来源于<strong>统一认证组织机构人员管控平台</strong></p>
 </blockquote>
-<h2 id="类Runtime"><a href="#类Runtime" class="headerlink" title="类Runtime"></a>类Runtime</h2><ol>
-<li>没有提供构造函数：代表它不能直接创建对象</li>
-<li>它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Runtime对象</div><div class="line">该类并没有提供构造函数。</div><div class="line">说明不可以new对象，那么会直接想到该类中的方法都是静态的。</div><div class="line">发现该类中还有非静态方法。</div><div class="line">说明该类肯定会提供了方法获取本类对象。而且该方法是静态的，并且返回值类型时本类类型。</div><div class="line">由这个特点可以看出该类使用了单例设计模式完成。</div><div class="line"></div><div class="line">该方式是static Runtime getRuntime();</div><div class="line">*/</div><div class="line">class RuntimeDemo &#123;</div><div class="line">    public static void main(String[] args) throw Exception&#123;</div><div class="line">        Runtime r = Runtime.getRuntime();</div><div class="line">        </div><div class="line">        //<span class="built_in">exec</span>可以执行命令，（打开扫雷：先找该路径，找不到就到系统(环境变量的)目录找，找不到就报异常)</div><div class="line">        Process p = r.exec(<span class="string">"c:\\winmine.exe"</span>);  //Process p = r.exec(<span class="string">"notepad.exe SystemDemo.java"</span>); //记事本打开SystemDemo.java</div><div class="line">        </div><div class="line">        </div><div class="line">        //Thread.sleep(4000);//等待4秒</div><div class="line">        //p.destroy();//杀手进程</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="原来方案："><a href="#原来方案：" class="headerlink" title="原来方案："></a>原来方案：</h3><p>自定义一个日期 startTime ，从 startTime 到当前的这段时间内的所有数据变动（增删改），<br>打成压缩包发送过来、解压、处理数据、删除压缩包</p>
+<ul>
+<li><p>优点：统一认证组织机构人员管控平台上的数据保证正确性，其它系统从日志来，所有的操作都有记录</p>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>startTime到当前时间如果过长会造成数据量很大，同步失败</li>
+<li>即使时间间隔短，但如果在该时间段内的数据量很大，同步也会失败</li>
+<li>后台的定时任务来拉取，例如10分钟拉取一次，当从统一认证组织机构人员管理平台接入的业务系统很多时，服务器压力很大</li>
+<li>数据丢失后，想要恢复一般在晚上，增加了运维成本</li>
+</ul>
+</li>
+</ul>
+<h3 id="推荐方案："><a href="#推荐方案：" class="headerlink" title="推荐方案："></a>推荐方案：</h3><p>因<strong>统一认证组织机构人员管理平台</strong>的数据库与业务系统的数据库在同一个数据库集群中，所以直接从认证组织机构人员库来拉取数据<br>在业务系统中建立视图</p>
+
       
     </div>
 
@@ -323,7 +333,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag">#Java</a>
+            <a href="/tags/工作事件/" rel="tag">#工作事件</a>
           
         </div>
       
@@ -332,17 +342,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/16/Java基础IO输入输出01/" rel="next" title="Java基础IO输入输出01">
-                <i class="fa fa-chevron-left"></i> Java基础IO输入输出01
+              <a href="/2017/09/19/ECMAScript-6入门/" rel="next" title="ECMAScript 6入门">
+                <i class="fa fa-chevron-left"></i> ECMAScript 6入门
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/16/Java基础IO输入输出03/" rel="prev" title="Java基础IO输入输出03">
-                Java基础IO输入输出03 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -368,8 +374,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/16/Java基础IO输入输出02/"
-           data-title="Java基础IO输入输出02" data-url="http://yoursite.com/2016/11/16/Java基础IO输入输出02/">
+      <div class="ds-thread" data-thread-key="2017/09/30/一次数据库表同步经历/"
+           data-title="一次数据库表同步经历" data-url="http://yoursite.com/2017/09/30/一次数据库表同步经历/">
       </div>
     
   </div>
@@ -453,7 +459,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runtime对象"><span class="nav-number">1.</span> <span class="nav-text">Runtime对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导语："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">导语：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类Runtime"><span class="nav-number">1.1.</span> <span class="nav-text">类Runtime</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件背景：同步组织人员数据"><span class="nav-number">1.</span> <span class="nav-text">事件背景：同步组织人员数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务描述："><span class="nav-number">1.1.</span> <span class="nav-text">任务描述：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原来方案："><span class="nav-number">1.1.1.</span> <span class="nav-text">原来方案：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐方案："><span class="nav-number">1.1.2.</span> <span class="nav-text">推荐方案：</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

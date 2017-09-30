@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ECMAScript6," />
 
 
 
@@ -84,13 +84,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="新的篇章">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+<meta name="description" content="注：以下均是在 浏览器的 ES6 环境中   避免在块级作用域内声明函数，如果确实需要，也应写成函数表达式，而不是函数声明语句1234567891011121314//函数声明语句&amp;#123;     let a = &apos;secret&apos;;     function f() &amp;#123;          return a;     &amp;#125;&amp;#125;//函数表达式&amp;#123;     let">
+<meta name="keywords" content="ECMAScript6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 6入门">
+<meta property="og:url" content="http://yoursite.com/2017/09/19/ECMAScript-6入门/index.html">
 <meta property="og:site_name" content="新的篇章">
+<meta property="og:description" content="注：以下均是在 浏览器的 ES6 环境中   避免在块级作用域内声明函数，如果确实需要，也应写成函数表达式，而不是函数声明语句1234567891011121314//函数声明语句&amp;#123;     let a = &apos;secret&apos;;     function f() &amp;#123;          return a;     &amp;#125;&amp;#125;//函数表达式&amp;#123;     let">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-19T03:09:46.359Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新的篇章">
+<meta name="twitter:title" content="ECMAScript 6入门">
+<meta name="twitter:description" content="注：以下均是在 浏览器的 ES6 环境中   避免在块级作用域内声明函数，如果确实需要，也应写成函数表达式，而不是函数声明语句1234567891011121314//函数声明语句&amp;#123;     let a = &apos;secret&apos;;     function f() &amp;#123;          return a;     &amp;#125;&amp;#125;//函数表达式&amp;#123;     let">
 
 
 
@@ -111,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2017/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/19/ECMAScript-6入门/"/>
 
-  <title> 归档 | 新的篇章 </title>
+  <title> ECMAScript 6入门 | 新的篇章 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -134,7 +139,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -222,214 +227,138 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 15 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/30/一次数据库表同步经历/" itemprop="url">
-              
-                <span itemprop="name">一次数据库表同步经历</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-30T16:43:12+08:00"
-              content="2017-09-30" >
-          09-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/19/ECMAScript-6入门/" itemprop="url">
-              
-                <span itemprop="name">ECMAScript 6入门</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-19T10:02:20+08:00"
-              content="2017-09-19" >
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/09/同一账号多设备同时登录/" itemprop="url">
-              
-                <span itemprop="name">同一账号多设备同时登录</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-09T22:54:18+08:00"
-              content="2017-09-09" >
-          09-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/28/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-28T22:38:05+08:00"
-              content="2017-08-28" >
-          08-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/05/Java网络编程05-TCP和UDP/" itemprop="url">
-              
-                <span itemprop="name">Java网络编程05(TCP和UDP)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-05T21:13:09+08:00"
-              content="2017-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ECMAScript 6入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-19T10:02:20+08:00" content="2017-09-19">
+              2017-09-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/19/ECMAScript-6入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/19/ECMAScript-6入门/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>注：以下均是在 浏览器的 ES6 环境中</p>
+</blockquote>
+<ol>
+<li>避免在块级作用域内声明函数，如果确实需要，也应写成函数表达式，而不是函数声明语句<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//函数声明语句</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">let</span> a = <span class="string">'secret'</span>;</div><div class="line">     <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> a;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//函数表达式</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">let</span> a = <span class="string">'secret'</span>;</div><div class="line">     <span class="keyword">let</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> a;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ECMAScript6/" rel="tag">#ECMAScript6</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/09/同一账号多设备同时登录/" rel="next" title="同一账号多设备同时登录">
+                <i class="fa fa-chevron-left"></i> 同一账号多设备同时登录
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/30/一次数据库表同步经历/" rel="prev" title="一次数据库表同步经历">
+                一次数据库表同步经历 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -437,6 +366,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/19/ECMAScript-6入门/"
+           data-title="ECMAScript 6入门" data-url="http://yoursite.com/2017/09/19/ECMAScript-6入门/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -456,8 +393,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -500,6 +446,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -596,11 +553,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

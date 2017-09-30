@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,18 +84,17 @@
 
 
 
-<meta name="description" content="Runtime对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Runtime 没有提供构造函数：代表它不能直接创建对象 它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。  1">
-<meta name="keywords" content="Java">
+<meta name="description" content="多端同时登录1.概述 session多端登录，就是保持session的一致性。由于session是唯一的，所以要保持session的唯一性，可以将session存放在一个地方，到时候大家取的时候，统一从一个地方取session，这样就保持了session的一致。 2.实现session的方法 其实就是将session存放在一个地方，大家存取就好了。至于其他都是附加的，原理就是酱紫。一般实现的方法有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础IO输入输出02">
-<meta property="og:url" content="http://yoursite.com/2016/11/16/Java基础IO输入输出02/index.html">
+<meta property="og:title" content="同一账号多设备同时登录">
+<meta property="og:url" content="http://yoursite.com/2017/09/09/同一账号多设备同时登录/index.html">
 <meta property="og:site_name" content="新的篇章">
-<meta property="og:description" content="Runtime对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Runtime 没有提供构造函数：代表它不能直接创建对象 它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。  1">
+<meta property="og:description" content="多端同时登录1.概述 session多端登录，就是保持session的一致性。由于session是唯一的，所以要保持session的唯一性，可以将session存放在一个地方，到时候大家取的时候，统一从一个地方取session，这样就保持了session的一致。 2.实现session的方法 其实就是将session存放在一个地方，大家存取就好了。至于其他都是附加的，原理就是酱紫。一般实现的方法有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-11-16T15:49:15.593Z">
+<meta property="og:updated_time" content="2017-09-09T15:33:55.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础IO输入输出02">
-<meta name="twitter:description" content="Runtime对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类Runtime 没有提供构造函数：代表它不能直接创建对象 它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。  1">
+<meta name="twitter:title" content="同一账号多设备同时登录">
+<meta name="twitter:description" content="多端同时登录1.概述 session多端登录，就是保持session的一致性。由于session是唯一的，所以要保持session的唯一性，可以将session存放在一个地方，到时候大家取的时候，统一从一个地方取session，这样就保持了session的一致。 2.实现session的方法 其实就是将session存放在一个地方，大家存取就好了。至于其他都是附加的，原理就是酱紫。一般实现的方法有">
 
 
 
@@ -116,9 +115,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/16/Java基础IO输入输出02/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/09/同一账号多设备同时登录/"/>
 
-  <title> Java基础IO输入输出02 | 新的篇章 </title>
+  <title> 同一账号多设备同时登录 | 新的篇章 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +247,7 @@
             
             
               
-                Java基础IO输入输出02
+                同一账号多设备同时登录
               
             
           </h1>
@@ -260,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T21:57:19+08:00" content="2016-11-16">
-              2016-11-16
+            <time itemprop="dateCreated" datetime="2017-09-09T22:54:18+08:00" content="2017-09-09">
+              2017-09-09
             </time>
           </span>
 
@@ -271,8 +270,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/16/Java基础IO输入输出02/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出02/" itemprop="commentsCount"></span>
+                <a href="/2017/09/09/同一账号多设备同时登录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/09/同一账号多设备同时登录/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,14 +294,27 @@
       
 
       
-        <h1 id="Runtime对象"><a href="#Runtime对象" class="headerlink" title="Runtime对象"></a>Runtime对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
-<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+        <h2 id="多端同时登录"><a href="#多端同时登录" class="headerlink" title="多端同时登录"></a>多端同时登录</h2><p>1.概述</p>
+<p>session多端登录，就是保持session的一致性。由于session是唯一的，所以要保持session的唯一性，可以将session存放在一个地方，到时候大家取的时候，统一从一个地方取session，这样就保持了session的一致。</p>
+<p>2.实现session的方法</p>
+<p>其实就是将session存放在一个地方，大家存取就好了。至于其他都是附加的，原理就是酱紫。一般实现的方法有：</p>
+<p>1）nfs文件共享系统，让不同项目访问同一个共享的文件。</p>
+<p>2）存放在mysql。</p>
+<p>3）存放在内存数据库，比如redis，memcache等。</p>
+<p>4）基于cookie的共享。这个需要域名统一。</p>
+<p>3.关于redis的session共享，其他类似</p>
+<p>1)php.ini里面存放得有session的存放地址，可以将session的地址改成redis存放session的地址。session.save_path<br>但是一般这种服务器端会有访问控制。所以可以参考第二种方法</p>
+<p>2)重写session，通过php代码更改session的存放路径什么的。php有相关的session重写的类。</p>
+<h2 id="同一浏览器，登录多个用户"><a href="#同一浏览器，登录多个用户" class="headerlink" title="同一浏览器，登录多个用户"></a>同一浏览器，登录多个用户</h2><p>背景：在同一个浏览器里登录两个用户，第二个用户会把第一个用户的信息覆盖掉（使用session获取用户信息）</p>
+<p>原因：存入session的key是同一个</p>
+<blockquote>
+<p>解决方案：</p>
 </blockquote>
-<h2 id="类Runtime"><a href="#类Runtime" class="headerlink" title="类Runtime"></a>类Runtime</h2><ol>
-<li>没有提供构造函数：代表它不能直接创建对象</li>
-<li>它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Runtime对象</div><div class="line">该类并没有提供构造函数。</div><div class="line">说明不可以new对象，那么会直接想到该类中的方法都是静态的。</div><div class="line">发现该类中还有非静态方法。</div><div class="line">说明该类肯定会提供了方法获取本类对象。而且该方法是静态的，并且返回值类型时本类类型。</div><div class="line">由这个特点可以看出该类使用了单例设计模式完成。</div><div class="line"></div><div class="line">该方式是static Runtime getRuntime();</div><div class="line">*/</div><div class="line">class RuntimeDemo &#123;</div><div class="line">    public static void main(String[] args) throw Exception&#123;</div><div class="line">        Runtime r = Runtime.getRuntime();</div><div class="line">        </div><div class="line">        //<span class="built_in">exec</span>可以执行命令，（打开扫雷：先找该路径，找不到就到系统(环境变量的)目录找，找不到就报异常)</div><div class="line">        Process p = r.exec(<span class="string">"c:\\winmine.exe"</span>);  //Process p = r.exec(<span class="string">"notepad.exe SystemDemo.java"</span>); //记事本打开SystemDemo.java</div><div class="line">        </div><div class="line">        </div><div class="line">        //Thread.sleep(4000);//等待4秒</div><div class="line">        //p.destroy();//杀手进程</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在后台将登陆信息放入session时，创建不同的key。session.setAttribute(“用户名+key”, user);</p>
+<h2 id="即时通讯系统中如何实现：多端（PC、mobile）同时在线"><a href="#即时通讯系统中如何实现：多端（PC、mobile）同时在线" class="headerlink" title="即时通讯系统中如何实现：多端（PC、mobile）同时在线"></a>即时通讯系统中如何实现：多端（PC、mobile）同时在线</h2><p>参考：<a href="http://blog.csdn.net/zhuweisky/article/details/50553427" target="_blank" rel="external">http://blog.csdn.net/zhuweisky/article/details/50553427</a></p>
+<h2 id="多终端同时登录，当一个终端修改密码后，其它终端如何处理？"><a href="#多终端同时登录，当一个终端修改密码后，其它终端如何处理？" class="headerlink" title="多终端同时登录，当一个终端修改密码后，其它终端如何处理？"></a>多终端同时登录，当一个终端修改密码后，其它终端如何处理？</h2><p>目前有一个项目，同时允许Web端，Moible端，Pad端登录。当同时登录后，现在Web端修改了用户密码后，按道理说Mobile端及Pad端再操作时用户身份要立即失效，必须退出并重新登录验证后才有效。<br>如何实现通知其它终端立即失效呢？</p>
+<p>如果是移动客户端的话，我觉得可以主动推送通知。 网页端的么，想了一个方案1 .把所有已登录的用户保存在一块内存中，用户的每个操作都要另外检验这个内存中是否有该用户的数据，如果没有，就强制重新登录。当有一个用户修改了密码以后，就对当前所有登录这个用户名的账号清掉他的数据，此时，他再操作就要求重新登录了。</p>
+
       
     </div>
 
@@ -321,27 +333,21 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag">#Java</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/16/Java基础IO输入输出01/" rel="next" title="Java基础IO输入输出01">
-                <i class="fa fa-chevron-left"></i> Java基础IO输入输出01
+              <a href="/2017/08/28/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/16/Java基础IO输入输出03/" rel="prev" title="Java基础IO输入输出03">
-                Java基础IO输入输出03 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/19/ECMAScript-6入门/" rel="prev" title="ECMAScript 6入门">
+                ECMAScript 6入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -368,8 +374,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/16/Java基础IO输入输出02/"
-           data-title="Java基础IO输入输出02" data-url="http://yoursite.com/2016/11/16/Java基础IO输入输出02/">
+      <div class="ds-thread" data-thread-key="2017/09/09/同一账号多设备同时登录/"
+           data-title="同一账号多设备同时登录" data-url="http://yoursite.com/2017/09/09/同一账号多设备同时登录/">
       </div>
     
   </div>
@@ -453,7 +459,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runtime对象"><span class="nav-number">1.</span> <span class="nav-text">Runtime对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导语："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">导语：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类Runtime"><span class="nav-number">1.1.</span> <span class="nav-text">类Runtime</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多端同时登录"><span class="nav-number">1.</span> <span class="nav-text">多端同时登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同一浏览器，登录多个用户"><span class="nav-number">2.</span> <span class="nav-text">同一浏览器，登录多个用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#即时通讯系统中如何实现：多端（PC、mobile）同时在线"><span class="nav-number">3.</span> <span class="nav-text">即时通讯系统中如何实现：多端（PC、mobile）同时在线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多终端同时登录，当一个终端修改密码后，其它终端如何处理？"><span class="nav-number">4.</span> <span class="nav-text">多终端同时登录，当一个终端修改密码后，其它终端如何处理？</span></a></li></ol></div>
             
           </div>
         </section>

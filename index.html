@@ -246,6 +246,118 @@
             
               
                 
+                <a class="post-title-link" href="/2017/10/18/js类的写法/" itemprop="url">
+                  js类的写法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-18T22:05:52+08:00" content="2017-10-18">
+              2017-10-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/10/18/js类的写法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/18/js类的写法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="js类的写法"><a href="#js类的写法" class="headerlink" title="js类的写法"></a>js类的写法</h1><h4 id="ES5标准："><a href="#ES5标准：" class="headerlink" title="ES5标准："></a>ES5标准：</h4><blockquote>
+<p>写法一：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义</span></div><div class="line"><span class="keyword">var</span> AsyncMessage = <span class="function"><span class="keyword">function</span> (<span class="params">orgid, orgddkey, msgtype</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> _this = <span class="keyword">this</span>;</div><div class="line">	_this.orgid = orgid;</div><div class="line">	_this.orgddkey = orgddkey;</div><div class="line">	_this.msgtype = msgtype || <span class="string">'oa'</span>;</div><div class="line">	_this.access_token = <span class="string">''</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		getDingAccessToken : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'我是getDingAccessToken'</span>);</div><div class="line">		&#125;,</div><div class="line">		sendAsyncMsg : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'我是sendAsyncMsg'</span>);</div><div class="line">		&#125;,</div><div class="line">		sendDingMsg : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'我是sendDingMsg'</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//调用</span></div><div class="line"><span class="keyword">var</span> mainMessage = <span class="keyword">new</span> AsyncMessage(<span class="string">'abcde'</span>,<span class="string">'C7wDa_u3qa'</span>,<span class="string">'ding'</span>);</div><div class="line">mainMessage.sendDingMsg();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>写法二：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = x;</div><div class="line">  <span class="keyword">this</span>.y = y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure>
+<h4 id="ES6标准"><a href="#ES6标准" class="headerlink" title="ES6标准"></a>ES6标准</h4><blockquote>
+<p>引入了 Class（类）这个概念</p>
+</blockquote>
+<p>类和模块的内部，默认就是严格模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//定义类</div><div class="line">class Point &#123;</div><div class="line"></div><div class="line">  /*构造函数*/</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    this.x = x;</div><div class="line">    this.y = y;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  //方法与方法之间不需要逗号</div><div class="line">  toString() &#123;</div><div class="line">    //......</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  toValue() &#123;</div><div class="line">    //.....</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 等同于</div><div class="line"></div><div class="line">Point.prototype = &#123;</div><div class="line">  constructor() &#123;&#125;,</div><div class="line">  toString() &#123;&#125;,</div><div class="line">  toValue() &#123;&#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/09/30/深到骨子里的成熟/" itemprop="url">
                   深到骨子里的成熟
                 </a>
@@ -1248,109 +1360,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/Java基础IO输入输出04/" itemprop="url">
-                  Java基础IO输入输出04
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T21:58:03+08:00" content="2016-11-16">
-              2016-11-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/16/Java基础IO输入输出04/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出04/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Calendar对象"><a href="#Calendar对象" class="headerlink" title="Calendar对象"></a>Calendar对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
-<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
-</blockquote>
-<h2 id="类Calendar"><a href="#类Calendar" class="headerlink" title="类Calendar"></a>类Calendar</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Calendar对象</div><div class="line">另请参见：</div><div class="line">DateFormat、Calendar、TimeZone</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">import java.text.*;</div><div class="line">class CalendarDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        </div><div class="line">        //方法一：</div><div class="line">        Date d = new Date();</div><div class="line">        SimpleDateFormat sdf = new SimpleDateFormat(<span class="string">"yyyy"</span>);</div><div class="line">        String year =  sdf.format(d);//返回的是字符串，我想加一年或减一年比较麻烦</div><div class="line">        System.out.println(year);</div><div class="line">        </div><div class="line">        //方法二：</div><div class="line">        Calendar c = Calendar.getInstance();</div><div class="line">        </div><div class="line">        //用查表法来改写</div><div class="line">        String[] mons = &#123;<span class="string">"一月"</span>,<span class="string">"二月"</span>,<span class="string">"三月"</span>,<span class="string">"四月"</span>,<span class="string">"五月"</span>,<span class="string">"六月"</span>,<span class="string">"七月"</span>,<span class="string">"八月"</span>,<span class="string">"九月"</span>,<span class="string">"十月"</span>,<span class="string">"十一月"</span>,<span class="string">"十二月"</span>&#125;;</div><div class="line">        int index = c.get(Calendar.MONTH);</div><div class="line">        </div><div class="line">        String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>,<span class="string">"星期日"</span>&#125;;</div><div class="line">        int index1 = c.get(Calendar.DAY_OF_WEEK);</div><div class="line">        </div><div class="line">        sop(c.get(Calendar.YEAR)+<span class="string">"年"</span>);</div><div class="line">        //sop((c.get(Calendar.MONTH)+1)+<span class="string">"月"</span>);</div><div class="line">        sop(mons[index]);</div><div class="line">        sop(c.get(Calendar.DAY_OF_MONTH)+<span class="string">"日"</span>);</div><div class="line">        //sop(<span class="string">"星期"</span>+c.get(Calendar.DAY_OF_WEEK));</div><div class="line">        sop(weeks[index1]);</div><div class="line">        </div><div class="line">        //一些方法</div><div class="line">        Calendar c1 = Calendar.getInstance();</div><div class="line">        //c1.set(2012,2,23);</div><div class="line">        //时间量的偏移</div><div class="line">        c1.add(Calendar.YEAR,4);//加4年</div><div class="line">        printCalendar(c1);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void sop(Object obj)&#123;</div><div class="line">        System.out.println(obj);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void printCalendar(Calendar c)&#123;</div><div class="line">        //用查表法来改写</div><div class="line">                String[] mons = &#123;<span class="string">"一月"</span>,<span class="string">"二月"</span>,<span class="string">"三月"</span>,<span class="string">"四月"</span>,<span class="string">"五月"</span>,<span class="string">"六月"</span>,<span class="string">"七月"</span>,<span class="string">"八月"</span>,<span class="string">"九月"</span>,<span class="string">"十月"</span>,<span class="string">"十一月"</span>,<span class="string">"十二月"</span>&#125;;</div><div class="line">                int index = c.get(Calendar.MONTH);</div><div class="line">                </div><div class="line">                String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>,<span class="string">"星期日"</span>&#125;;</div><div class="line">                int index1 = c.get(Calendar.DAY_OF_WEEK);</div><div class="line">                </div><div class="line">                sop(c.get(Calendar.YEAR)+<span class="string">"年"</span>);</div><div class="line">                //sop((c.get(Calendar.MONTH)+1)+<span class="string">"月"</span>);</div><div class="line">                sop(mons[index]);</div><div class="line">                sop(c.get(Calendar.DAY_OF_MONTH)+<span class="string">"日"</span>);</div><div class="line">                //sop(<span class="string">"星期"</span>+c.get(Calendar.DAY_OF_WEEK));</div><div class="line">                sop(weeks[index1]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1396,7 +1405,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1406,7 +1415,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

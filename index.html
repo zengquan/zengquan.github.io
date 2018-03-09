@@ -707,20 +707,14 @@ var_dump($val);
         
           
             <h3 id="Mysql实用示例："><a href="#Mysql实用示例：" class="headerlink" title="Mysql实用示例："></a>Mysql实用示例：</h3><blockquote>
-<ol>
-<li>返回id集合的字符串，用逗号隔开：<code>id1,id2,id3,...,idn</code></li>
-</ol>
+<p>返回id集合的字符串，用逗号隔开：<code>id1,id2,id3,...,idn</code></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT GROUP_CONCAT(id) FROM t1</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>注意：</strong>长度超过1024时，会被截断</li>
-</ul>
+<p><strong>注意：</strong>长度超过1024时，会被截断</p>
 <blockquote>
-<ol>
-<li>查询某个字段出现N次的数据</li>
-</ol>
+<p>查询某个字段出现N次的数据</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> uid,<span class="keyword">COUNT</span>(uid) <span class="keyword">AS</span> <span class="keyword">num</span> <span class="keyword">FROM</span> gzszf_meeting_notice_org_staff <span class="keyword">WHERE</span> meetingId=<span class="string">'318'</span> <span class="keyword">AND</span> isDelet=<span class="number">0</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> uid <span class="keyword">HAVING</span> <span class="keyword">num</span>&gt;N</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> </div><div class="line">uid,<span class="keyword">COUNT</span>(uid) <span class="keyword">AS</span> <span class="keyword">num</span> </div><div class="line"><span class="keyword">FROM</span> gzszf_meeting_notice_org_staff </div><div class="line"><span class="keyword">WHERE</span> meetingId=<span class="string">'318'</span> <span class="keyword">AND</span> isDelet=<span class="number">0</span> </div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> uid <span class="keyword">HAVING</span> <span class="keyword">num</span>&gt;N</div></pre></td></tr></table></figure>
 
           
         

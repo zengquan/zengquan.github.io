@@ -1,0 +1,734 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="123456789Redis├─初识redis│  ├─Redis概念│  ├─Redis安装│  └─Redis的数据类型│ └─操作redis	├─PHP的redis拓展安装	└─PHP操作redis的五种类型 什么是Redis Redis是远程的 Redis是基于内存的 Redis是非关系型数据库  Redis的应用场景 缓存 队列:List的push、pop 数据存储  Redis的安装">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis从入门到精通">
+<meta property="og:url" content="http://yoursite.com/2017/12/19/Redis从入门到精通/index.html">
+<meta property="og:site_name" content="新的篇章">
+<meta property="og:description" content="123456789Redis├─初识redis│  ├─Redis概念│  ├─Redis安装│  └─Redis的数据类型│ └─操作redis	├─PHP的redis拓展安装	└─PHP操作redis的五种类型 什么是Redis Redis是远程的 Redis是基于内存的 Redis是非关系型数据库  Redis的应用场景 缓存 队列:List的push、pop 数据存储  Redis的安装">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-19T03:37:14.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis从入门到精通">
+<meta name="twitter:description" content="123456789Redis├─初识redis│  ├─Redis概念│  ├─Redis安装│  └─Redis的数据类型│ └─操作redis	├─PHP的redis拓展安装	└─PHP操作redis的五种类型 什么是Redis Redis是远程的 Redis是基于内存的 Redis是非关系型数据库  Redis的应用场景 缓存 队列:List的push、pop 数据存储  Redis的安装">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/19/Redis从入门到精通/"/>
+
+  <title> Redis从入门到精通 | 新的篇章 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">新的篇章</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Redis从入门到精通
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-19T09:44:24+08:00" content="2017-12-19">
+              2017-12-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/12/19/Redis从入门到精通/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/19/Redis从入门到精通/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Redis</div><div class="line">├─初识redis</div><div class="line">│  ├─Redis概念</div><div class="line">│  ├─Redis安装</div><div class="line">│  └─Redis的数据类型</div><div class="line">│ </div><div class="line">└─操作redis</div><div class="line">	├─PHP的redis拓展安装</div><div class="line">	└─PHP操作redis的五种类型</div></pre></td></tr></table></figure>
+<h3 id="什么是Redis"><a href="#什么是Redis" class="headerlink" title="什么是Redis"></a>什么是Redis</h3><ul>
+<li>Redis是远程的</li>
+<li>Redis是基于内存的</li>
+<li>Redis是非关系型数据库</li>
+</ul>
+<h3 id="Redis的应用场景"><a href="#Redis的应用场景" class="headerlink" title="Redis的应用场景"></a>Redis的应用场景</h3><ul>
+<li>缓存</li>
+<li>队列:List的push、pop</li>
+<li>数据存储</li>
+</ul>
+<h3 id="Redis的安装"><a href="#Redis的安装" class="headerlink" title="Redis的安装"></a>Redis的安装</h3><blockquote>
+<p>安装环境</p>
+</blockquote>
+<ol>
+<li><p>服务器环境：Linux / CentOS release 6.8</p>
+<p> cat /etc/redhat-release#查看系统版本</p>
+</li>
+<li><p>下载源码安装,Redis版本(2.8.13 <a href="http://download.redis.io/release" target="_blank" rel="external">http://download.redis.io/release</a>)</p>
+</li>
+<li><p>预装软件(gcc，tcl)</p>
+</li>
+</ol>
+<blockquote>
+<p>服务端安装使用</p>
+</blockquote>
+<ol>
+<li>tar -xf redis-2.8.13.tar.gz</li>
+<li>cd redis-2.8.13 后 make </li>
+<li>make install  (/usr/local/redis-server)</li>
+<li>redis-server启动</li>
+</ol>
+<blockquote>
+<p>客户端的安装</p>
+</blockquote>
+<h3 id="Redis的五种数据类型"><a href="#Redis的五种数据类型" class="headerlink" title="Redis的五种数据类型"></a>Redis的五种数据类型</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:left">存储的值</th>
+<th style="text-align:left">读写能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:left">可以是字符串、整数或浮点，统称为元素</td>
+<td style="text-align:left">对字符串操作对整数类型加减</td>
+</tr>
+<tr>
+<td style="text-align:center">List</td>
+<td style="text-align:left">一个序列集合且每个节点都包好了一个元素</td>
+<td style="text-align:left">序列两端推入、或弹出元素修剪、查找或移除元素</td>
+</tr>
+<tr>
+<td style="text-align:center">Set</td>
+<td style="text-align:left">各不相同的元素</td>
+<td style="text-align:left">从集合中插入或者删除元素</td>
+</tr>
+<tr>
+<td style="text-align:center">Hash</td>
+<td style="text-align:left">有key-value的散列组，其中key是字符串，value是元素</td>
+<td style="text-align:left">按照key进行增加删除</td>
+</tr>
+<tr>
+<td style="text-align:center">Sort Set</td>
+<td style="text-align:left">带分数的score-value有序集合，其中score为浮点,value为元素</td>
+<td style="text-align:left">集合插入，按照分数范围查找</td>
+</tr>
+</tbody>
+</table>
+<h3 id="PHP的Redis拓展安装"><a href="#PHP的Redis拓展安装" class="headerlink" title="PHP的Redis拓展安装"></a>PHP的Redis拓展安装</h3><h3 id="PHP操作Redis"><a href="#PHP操作Redis" class="headerlink" title="PHP操作Redis"></a>PHP操作Redis</h3><p><a href="https://github.com/phpredis/phpredis" target="_blank" rel="external">文档地址</a></p>
+<p>Redis类的命名空间是根</p>
+<p>phpredis的命令和参数基本和redis.io中的实际命令对应</p>
+<blockquote>
+<p>连接redis</p>
+</blockquote>
+<pre><code>$redis = new \Redis();
+$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);
+</code></pre><h4 id="String操作"><a href="#String操作" class="headerlink" title="String操作"></a>String操作</h4><pre><code>$redis = new \Redis();
+$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);
+$redis-&gt;delete(&quot;string1&quot;);
+$redis-&gt;set(&quot;sting1&quot;,&quot;val1&quot;);
+$val = $redis-&gt;get(&quot;string1&quot;);
+var_dump($val);
+
+$redis-&gt;set(&quot;string1&quot;,4);
+$redis-&gt;incr(&quot;string1&quot;,2);
+$val = $redis-&gt;get(&quot;string1&quot;);
+var_dump($val);
+</code></pre><h4 id="list类型操作"><a href="#list类型操作" class="headerlink" title="list类型操作"></a>list类型操作</h4><pre><code>$redis = new \Redis();
+$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);
+$redis-&gt;delete(&quot;list1&quot;);
+
+$redis-&gt;lPush(&quot;list1&quot;,&quot;A&quot;);
+$redis-&gt;lPush(&quot;list1&quot;,&quot;B&quot;);
+$redis-&gt;lPush(&quot;list1&quot;,&quot;C&quot;);
+
+$val = $redis-&gt;rPop(&quot;list1&quot;);
+var_dump($val);
+</code></pre><h4 id="set类型操作"><a href="#set类型操作" class="headerlink" title="set类型操作"></a>set类型操作</h4><pre><code>$redis = new \Redis();
+$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);
+$redis-&gt;delete(&quot;set1&quot;);
+
+$redis-&gt;sAdd(&quot;set1&quot;,&quot;A&quot;);
+$redis-&gt;sAdd(&quot;set1&quot;,&quot;B&quot;);
+$redis-&gt;sAdd(&quot;set1&quot;,&quot;C&quot;);
+$redis-&gt;sAdd(&quot;set1&quot;,&quot;C&quot;);
+
+$val = $redis-&gt;sCard(&quot;set1&quot;);
+var_dump($val);//3
+
+$val = $redis-&gt;sMembers(&quot;set1&quot;);
+var_dump($val);//array
+</code></pre><h4 id="hash类型操作"><a href="#hash类型操作" class="headerlink" title="hash类型操作"></a>hash类型操作</h4><pre><code>$redis = new \Redis();
+$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);
+$redis-&gt;delete(&quot;driver1&quot;);
+
+$redis-&gt;hSet(&quot;driver1&quot;,&quot;name&quot;,&quot;mingming&quot;);
+$redis-&gt;hSet(&quot;driver1&quot;,&quot;age&quot;,25);
+$redis-&gt;hSet(&quot;driver1&quot;,&quot;sex&quot;,1);
+
+$val = $redis-&gt;hGet(&quot;driver1&quot;,&apos;name&apos;);
+var_dump($val);
+
+$val = $redis-&gt;hMGet(&quot;driver1&quot;,array(&quot;name&quot;,&quot;age&quot;));
+var_dump($val);
+</code></pre><h4 id="sort-set类型操作"><a href="#sort-set类型操作" class="headerlink" title="sort set类型操作"></a>sort set类型操作</h4><pre><code>$redis = new \Redis();
+$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);
+$redis-&gt;delete(&quot;zset1&quot;);
+
+$redis-&gt;zAdd(&quot;zset1&quot;,100,&quot;xiangming&quot;);
+$redis-&gt;zAdd(&quot;zset1&quot;,90,&quot;xianghong&quot;);
+$redis-&gt;zAdd(&quot;zset1&quot;,93,&quot;xiangwang&quot;);
+
+$val = $redis-&gt;zRange(&quot;zset1&quot;,0,-1);//低到高
+var_dump($val);
+
+$val = $redis-&gt;zRevRange(&quot;zset1&quot;,0,-1);//从高到低
+var_dump($val);
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag">#Redis</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/05/Linux-命令/" rel="next" title="Linux 命令">
+                <i class="fa fa-chevron-left"></i> Linux 命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/12/19/Redis从入门到精通/"
+           data-title="Redis从入门到精通" data-url="http://yoursite.com/2017/12/19/Redis从入门到精通/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="北辰" />
+          <p class="site-author-name" itemprop="name">北辰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Redis"><span class="nav-number">1.</span> <span class="nav-text">什么是Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis的应用场景"><span class="nav-number">2.</span> <span class="nav-text">Redis的应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis的安装"><span class="nav-number">3.</span> <span class="nav-text">Redis的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis的五种数据类型"><span class="nav-number">4.</span> <span class="nav-text">Redis的五种数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP的Redis拓展安装"><span class="nav-number">5.</span> <span class="nav-text">PHP的Redis拓展安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP操作Redis"><span class="nav-number">6.</span> <span class="nav-text">PHP操作Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String操作"><span class="nav-number">6.1.</span> <span class="nav-text">String操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list类型操作"><span class="nav-number">6.2.</span> <span class="nav-text">list类型操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set类型操作"><span class="nav-number">6.3.</span> <span class="nav-text">set类型操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hash类型操作"><span class="nav-number">6.4.</span> <span class="nav-text">hash类型操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort-set类型操作"><span class="nav-number">6.5.</span> <span class="nav-text">sort set类型操作</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zengquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

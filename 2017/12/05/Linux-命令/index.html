@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="查看系统是64位还是32位：getconf LONG_BIT 列出所有的版本信息：lsb_release -a CentOs（安装好默认只打开了22端口）防火墙端口开放  列出所有端口1netstat -ntlp nc命令检测端口：123456789nc -v -w 10 -z 172.16.0.1 8080// 扫码172.16.0.1的8080端口/*-v  显示指令执行过程-w  &amp;lt;">
+<meta name="description" content="查看系统是64位还是32位：getconf LONG_BIT 列出所有的版本信息：lsb_release -a CentOs（安装好默认只打开了22端口）防火墙端口开放 查看磁盘大小: df -h  短信测试 ?LCMSPID=x7hndqIVKxThbAvHyXt8OHC36r47IZxjQ8fmwhI26MJZpGZyV–779-WQiAp5zLukCZfog  domain=1  ?LCM">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 命令">
 <meta property="og:url" content="http://yoursite.com/2017/12/05/Linux-命令/index.html">
 <meta property="og:site_name" content="新的篇章">
-<meta property="og:description" content="查看系统是64位还是32位：getconf LONG_BIT 列出所有的版本信息：lsb_release -a CentOs（安装好默认只打开了22端口）防火墙端口开放  列出所有端口1netstat -ntlp nc命令检测端口：123456789nc -v -w 10 -z 172.16.0.1 8080// 扫码172.16.0.1的8080端口/*-v  显示指令执行过程-w  &amp;lt;">
+<meta property="og:description" content="查看系统是64位还是32位：getconf LONG_BIT 列出所有的版本信息：lsb_release -a CentOs（安装好默认只打开了22端口）防火墙端口开放 查看磁盘大小: df -h  短信测试 ?LCMSPID=x7hndqIVKxThbAvHyXt8OHC36r47IZxjQ8fmwhI26MJZpGZyV–779-WQiAp5zLukCZfog  domain=1  ?LCM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-07T07:21:49.545Z">
+<meta property="og:updated_time" content="2017-12-28T02:49:38.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 命令">
-<meta name="twitter:description" content="查看系统是64位还是32位：getconf LONG_BIT 列出所有的版本信息：lsb_release -a CentOs（安装好默认只打开了22端口）防火墙端口开放  列出所有端口1netstat -ntlp nc命令检测端口：123456789nc -v -w 10 -z 172.16.0.1 8080// 扫码172.16.0.1的8080端口/*-v  显示指令执行过程-w  &amp;lt;">
+<meta name="twitter:description" content="查看系统是64位还是32位：getconf LONG_BIT 列出所有的版本信息：lsb_release -a CentOs（安装好默认只打开了22端口）防火墙端口开放 查看磁盘大小: df -h  短信测试 ?LCMSPID=x7hndqIVKxThbAvHyXt8OHC36r47IZxjQ8fmwhI26MJZpGZyV–779-WQiAp5zLukCZfog  domain=1  ?LCM">
 
 
 
@@ -299,14 +299,37 @@
 <li>查看系统是64位还是32位：<code>getconf LONG_BIT</code></li>
 <li>列出所有的版本信息：<code>lsb_release -a</code></li>
 <li>CentOs（安装好默认只打开了22端口）防火墙端口开放</li>
+<li>查看磁盘大小: <code>df -h</code></li>
 </ol>
+<h3 id="短信测试"><a href="#短信测试" class="headerlink" title="短信测试"></a>短信测试</h3><ul>
+<li>?LCMSPID=x7hndqIVKxThbAvHyXt8OHC36r47IZxjQ8fmwhI26MJZpGZyV–779-WQiAp5zLukCZfog</li>
+</ul>
+<p>domain=1</p>
+<ul>
+<li>?LCMSPID=eUVczNY-D1xRjGN6VclfgfmUaTzjORgwsXlJsabd3B7dv8-Sx_uvXJFGtzsLn4Tr91PLs2kDEHC3HHUx</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">  $hostname=&apos;192.168.1.15&apos;;</div><div class="line">  $port=1433;//端口</div><div class="line">  $dbname=&quot;dbname&quot;;//库名</div><div class="line">  $username=&quot;sa&quot;;//用户</div><div class="line">  $pw=&quot;sa&quot;;//密码</div><div class="line">  $dbh= new PDO(&quot;dblib:host=$hostname:$port;dbname=$dbname&quot;,&quot;$username&quot;,&quot;$pw&quot;);</div><div class="line">&#125; catch (PDOException $e) &#123;</div><div class="line">  echo&quot;Failed to get DB handle: &quot;.$e-&gt;getMessage() .&quot;n&quot;;</div><div class="line">  exit;</div><div class="line">&#125;</div><div class="line">echo&apos;connent MSSQL succeed&apos;;</div><div class="line"> </div><div class="line">$stmt = $dbh-&gt;prepare(&quot;insert into dbo.sms(createtime,username,CustomerName,CustomerPhone,smstext,FType,GroupID) values(&apos;2017-12-11 11:45:00&apos;,&apos;sw_hyxt&apos;,&apos;曾权&apos;,&apos;18586912652&apos;,&apos;联通号码测试&apos;,2,&apos;20171211071213&apos;)&quot;);</div><div class="line">$stmt-&gt;execute();</div><div class="line">  </div><div class="line">while ($row = $stmt-&gt;fetch()) &#123;</div><div class="line">  print_r($row);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">unset($dbh);</div><div class="line">unset($stmt);</div></pre></td></tr></table></figure>
+<h3 id="linux的rpm包下载地址"><a href="#linux的rpm包下载地址" class="headerlink" title="linux的rpm包下载地址"></a>linux的rpm包下载地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//15286117396</div><div class="line">insert into sms(createtime,username,CustomerName,CustomerPhone,smstext,FType,GroupID) values(&apos;2017-12-11 11:18:00&apos;,&apos;sw_hyxt&apos;,&apos;曾权&apos;,&apos;15285117396&apos;,&apos;移动号码测试&apos;,2,&apos;20171211071213&apos;)</div><div class="line">insert into dbo.sms(createtime,username,CustomerName,CustomerPhone,smstext,FType,GroupID) values(&apos;&apos;,&apos;sw_hyxt&apos;,&apos;曾权&apos;,&apos;15285117396&apos;,&apos;移动号码测试&apos;,2,&apos;20171211071213&apos;)</div><div class="line"></div><div class="line">//18586912652</div><div class="line">insert into sms(createtime,username,CustomerName,CustomerPhone,smstext,FType,GroupID) values(&apos;2017-12-11 11:18:00&apos;,&apos;sw_hyxt&apos;,&apos;曾权&apos;,&apos;18586912652&apos;,&apos;联通号码测试&apos;,2,&apos;20171211071213&apos;)</div><div class="line">insert into dbo.sms(createtime,username,CustomerName,CustomerPhone,smstext,FType,GroupID) values(&apos;2017-12-11 11:45:00&apos;,&apos;sw_hyxt&apos;,&apos;曾权&apos;,&apos;18586912652&apos;,&apos;联通号码测试&apos;,2,&apos;20171211071213&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>按拓展名搜索</li>
+</ol>
+<p><a href="http://rpmfind.net/linux/rpm2html/search.php?query=mysql&amp;submit=Search+...&amp;system=&amp;arch=" target="_blank" rel="external">http://rpmfind.net/linux/rpm2html/search.php?query=mysql&amp;submit=Search+...&amp;system=&amp;arch=</a></p>
+<ol>
+<li>按系统来下载：</li>
+</ol>
+<p><a href="http://rpmfind.net/linux/RPM/centos/" target="_blank" rel="external">http://rpmfind.net/linux/RPM/centos/</a></p>
+<h3 id="重启linux"><a href="#重启linux" class="headerlink" title="重启linux"></a>重启linux</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shutdown -r now  #重启系统</div></pre></td></tr></table></figure>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">/* 一.通过文件名查找法： */</div><div class="line"></div><div class="line">#假设你忘记了httpd.conf这个文件在系统的哪个目录 下，甚至在系统的某个地方也不知道</div><div class="line">find / -name httpd.conf </div><div class="line"></div><div class="line">#在/etc目录下找</div><div class="line">find /etc -name httpd.conf</div><div class="line"></div><div class="line">/* 二.无错误查找技巧：  */</div><div class="line">#普通用户没有某些目录的权限，会提示&quot;Permissiondenied.&quot;(禁止访问)，系统将无法查找到需要的文件，</div><div class="line">#为了避免这样的错误，我们可是使用转移错误提示的方法尝试着查找文件，例如输入：find / -name access_log 2&gt;/dev/null </div><div class="line">#系统执行这个命令后，遇到错误的信息就直接输送到stderrstream2 中，access_log2就是表明系统将把错误信息输送到stderrstream2中，</div><div class="line">#/dev/null是一个特殊的文件，表明空的或者错误的信 息，这样查询到的错误信息将被转移了，不会再显示了。</div><div class="line">find / -name access_log 2&gt;/dev/null </div><div class="line"></div><div class="line">/* 三.根据部分文件名查找方法： */</div><div class="line">#知道某个文件包含有srm这3个字母，那么要找到系统中所有包含有这3个字母的文件是可以实现</div><div class="line">find /etc -name &apos;*srm*&apos; </div><div class="line"></div><div class="line">/* 四.根据文件的特征查询方法：  */</div><div class="line">#只知道某个文件的大小，修改日期等特征</div><div class="line">find /-size 1500c   #c表示以bytes为单位</div><div class="line">find /-size+1500c   #大于1500字节的文件都显示出来</div><div class="line"></div><div class="line">find / -amin -10 # 查找在系统中最后10分钟访问的文件 </div><div class="line">find / -atime -2 # 查找在系统中最后48小时访问的文件 </div><div class="line">find / -empty # 查找在系统中为空的文件或者文件夹 </div><div class="line">find / -group cat # 查找在系统中属于groupcat的文件 </div><div class="line">find / -mmin -5 # 查找在系统中最后5分钟里修改过的文件 </div><div class="line">find / -mtime -1 #查找在系统中最后24小时里修改过的文件 </div><div class="line">find / -nouser #查找在系统中属于作废用户的文件 </div><div class="line">find / -user fred #查找在系统中属于FRED这个用户的文件 </div><div class="line"></div><div class="line">关书籍可以知道所有find命令的查找函数。</div><div class="line">　　-amin n </div><div class="line">　　查找系统中最后N分钟访问的文件 </div><div class="line">　　-atime n </div><div class="line">　　查找系统中最后n*24小时访问的文件 </div><div class="line">　　-cmin n </div><div class="line">　　查找系统中最后N分钟被改变状态的文件 </div><div class="line">　　-ctime n </div><div class="line">　　查找系统中最后n*24小时被改变状态的文件 </div><div class="line">　　-empty </div><div class="line">　　查找系统中空白的文件，或空白的文件目录，或目录中没有子目录的文件夹 </div><div class="line">　　-false </div><div class="line">　　查找系统中总是错误的文件 </div><div class="line">　　-fstype type </div><div class="line">　　查找系统中存在于指定文件系统的文件，例如：ext2 . </div><div class="line">　　-gid n </div><div class="line">　　查找系统中文件数字组 ID 为 n的文件 </div><div class="line">　　-group gname </div><div class="line">　　查找系统中文件属于gnam文件组，并且指定组和ID的文件。</div></pre></td></tr></table></figure>
 <h3 id="列出所有端口"><a href="#列出所有端口" class="headerlink" title="列出所有端口"></a>列出所有端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ntlp</div></pre></td></tr></table></figure>
-<h3 id="nc命令检测端口："><a href="#nc命令检测端口：" class="headerlink" title="nc命令检测端口："></a>nc命令检测端口：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">nc -v -w 10 -z 172.16.0.1 8080</div><div class="line"></div><div class="line">// 扫码172.16.0.1的8080端口</div><div class="line"></div><div class="line">/*</div><div class="line">-v  显示指令执行过程</div><div class="line">-w  &lt;超时秒数&gt; 设置等待连线的时间</div><div class="line">-z  使用0输入/输出模式，只在扫码通信端口时使用</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h3 id="检测端口："><a href="#检测端口：" class="headerlink" title="检测端口："></a>检测端口：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/* 一、通过nc命令 */</div><div class="line"></div><div class="line">nc -v -w 10 -z 172.16.0.1 8080</div><div class="line"></div><div class="line">// 扫码172.16.0.1的8080端口</div><div class="line"></div><div class="line">/*</div><div class="line">-v  显示指令执行过程</div><div class="line">-w  &lt;超时秒数&gt; 设置等待连线的时间</div><div class="line">-z  使用0输入/输出模式，只在扫码通信端口时使用</div><div class="line">*/</div><div class="line"></div><div class="line">/* 二、通过其他方式 */</div><div class="line"></div><div class="line">http://www.jb51.net/article/78082.htm</div><div class="line"></div><div class="line"></div><div class="line">/* 三、windows下的检测方式 */</div><div class="line">telnet ip port</div><div class="line">http://blog.csdn.net/u013991521/article/details/54020301</div></pre></td></tr></table></figure>
+<p>ping 59.215.192.162<br>ping 59.215.244.10<br>ping 59.215.223.193</p>
+<p>traceroute  -n  59.215.192.162<br>traceroute  -n  59.215.244.10<br>traceroute  -n  59.215.223.193</p>
 <h3 id="防火墙基本操作"><a href="#防火墙基本操作" class="headerlink" title="防火墙基本操作"></a>防火墙基本操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#关闭防火墙</div><div class="line">/etc/init.d/iptables stop</div><div class="line"></div><div class="line">#停止服务</div><div class="line">service iptables stop</div><div class="line"></div><div class="line">#查看防火墙信息</div><div class="line">/etc/init.d/iptables status</div><div class="line"></div><div class="line">#重启防火墙以便生效（或者直接重启系统）</div><div class="line">/etc/init.d/iptables restart</div><div class="line"></div><div class="line">#将更改进行保存</div><div class="line">/etc/rc.d/init.d/iptables save</div></pre></td></tr></table></figure>
 <blockquote>
 <p>Centos 7 防火墙操作：</p>
 </blockquote>
 <p><a href="http://blog.csdn.net/qq_32606647/article/details/70332386" target="_blank" rel="external">http://blog.csdn.net/qq_32606647/article/details/70332386</a></p>
+<h3 id="双网卡双网关配置"><a href="#双网卡双网关配置" class="headerlink" title="双网卡双网关配置"></a>双网卡双网关配置</h3><p><a href="http://blog.csdn.net/yuanchao99/article/details/18992567" target="_blank" rel="external">http://blog.csdn.net/yuanchao99/article/details/18992567</a></p>
 <h4 id="开启端口（以80端口为例）"><a href="#开启端口（以80端口为例）" class="headerlink" title="开启端口（以80端口为例）"></a>开启端口（以80端口为例）</h4><blockquote>
 <p>方法一：</p>
 </blockquote>
@@ -330,6 +353,17 @@
 </li>
 </ul>
 <p>觉得甚是差异，估计是虚拟机装了有问题，就把虚拟机中的防火墙给清了一下，发现可行。</p>
+<h3 id="Linux如何加载-优-U盘"><a href="#Linux如何加载-优-U盘" class="headerlink" title="Linux如何加载(优)U盘"></a>Linux如何加载(优)U盘</h3><p>1，以root用户登陆<br>   先加载USB模块 modprobe usb-storage<br>   用fdisk -l 看看U盘的设备<br>   假如U盘是sda1</p>
+<p>2，确定在 目录 /mnt 下建立了 文件夹 /usb,如果未建立可键入一下命令：mkdir /mnt/usb_disk,成功后进行下一步。    </p>
+<p>3，载入 u 盘，需键入以下命令：mount  /dev/sda   /mnt/usb_disk<br>     成功后，即可使用 u 盘了, 文件就在目录 /mnt/usb 下。</p>
+<p>4，卸载u盘：在使用完u盘后，在拔出前需要先键入卸载U盘命令<br>     命令如下：umount /mnt/usb </p>
+<p>//nginx安装步骤<br><a href="http://blog.csdn.net/huaishuming/article/details/54345826" target="_blank" rel="external">http://blog.csdn.net/huaishuming/article/details/54345826</a></p>
+<h3 id="nginx配置proxy-pass代理转发"><a href="#nginx配置proxy-pass代理转发" class="headerlink" title="nginx配置proxy_pass代理转发"></a>nginx配置proxy_pass代理转发</h3><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。</p>
+<p>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="external">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
+<p>第一种：<br>location /proxy/ {<br>    proxy_pass <a href="http://127.0.0.1/" target="_blank" rel="external">http://127.0.0.1/</a>;<br>}<br>代理到URL：<a href="http://127.0.0.1/test.html" target="_blank" rel="external">http://127.0.0.1/test.html</a></p>
+<p>第二种（相对于第一种，最后少一个 / ）<br>location /proxy/ {<br>    proxy_pass <a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a>;<br>}<br>代理到URL：<a href="http://127.0.0.1/proxy/test.html" target="_blank" rel="external">http://127.0.0.1/proxy/test.html</a></p>
+<p>第三种：<br>location /proxy/ {<br>    proxy_pass <a href="http://127.0.0.1/aaa/" target="_blank" rel="external">http://127.0.0.1/aaa/</a>;<br>}<br>代理到URL：<a href="http://127.0.0.1/aaa/test.html" target="_blank" rel="external">http://127.0.0.1/aaa/test.html</a></p>
+<p>第四种（相对于第三种，最后少一个 / ）<br>location /proxy/ {<br>    proxy_pass <a href="http://127.0.0.1/aaa" target="_blank" rel="external">http://127.0.0.1/aaa</a>;<br>}<br>代理到URL：<a href="http://127.0.0.1/aaatest.html" target="_blank" rel="external">http://127.0.0.1/aaatest.html</a></p>
 
       
     </div>
@@ -367,6 +401,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/19/Redis从入门到精通/" rel="prev" title="Redis从入门到精通">
+                Redis从入门到精通 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -438,7 +476,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -448,7 +486,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -477,7 +515,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#列出所有端口"><span class="nav-number">1.</span> <span class="nav-text">列出所有端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nc命令检测端口："><span class="nav-number">2.</span> <span class="nav-text">nc命令检测端口：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防火墙基本操作"><span class="nav-number">3.</span> <span class="nav-text">防火墙基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开启端口（以80端口为例）"><span class="nav-number">3.1.</span> <span class="nav-text">开启端口（以80端口为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭端口"><span class="nav-number">3.2.</span> <span class="nav-text">关闭端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭防火墙"><span class="nav-number">3.3.</span> <span class="nav-text">关闭防火墙</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenSSH普通用户无法登陆的几种情况"><span class="nav-number">4.</span> <span class="nav-text">OpenSSH普通用户无法登陆的几种情况</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#短信测试"><span class="nav-number">1.</span> <span class="nav-text">短信测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux的rpm包下载地址"><span class="nav-number">2.</span> <span class="nav-text">linux的rpm包下载地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启linux"><span class="nav-number">3.</span> <span class="nav-text">重启linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作"><span class="nav-number">4.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出所有端口"><span class="nav-number">5.</span> <span class="nav-text">列出所有端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测端口："><span class="nav-number">6.</span> <span class="nav-text">检测端口：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防火墙基本操作"><span class="nav-number">7.</span> <span class="nav-text">防火墙基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双网卡双网关配置"><span class="nav-number">8.</span> <span class="nav-text">双网卡双网关配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开启端口（以80端口为例）"><span class="nav-number">8.1.</span> <span class="nav-text">开启端口（以80端口为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭端口"><span class="nav-number">8.2.</span> <span class="nav-text">关闭端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭防火墙"><span class="nav-number">8.3.</span> <span class="nav-text">关闭防火墙</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenSSH普通用户无法登陆的几种情况"><span class="nav-number">9.</span> <span class="nav-text">OpenSSH普通用户无法登陆的几种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux如何加载-优-U盘"><span class="nav-number">10.</span> <span class="nav-text">Linux如何加载(优)U盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx配置proxy-pass代理转发"><span class="nav-number">11.</span> <span class="nav-text">nginx配置proxy_pass代理转发</span></a></li></ol></div>
             
           </div>
         </section>
@@ -496,7 +534,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

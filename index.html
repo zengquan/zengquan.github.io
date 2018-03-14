@@ -715,6 +715,13 @@ var_dump($val);
 <p>查询某个字段出现N次的数据</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> </div><div class="line">uid,<span class="keyword">COUNT</span>(uid) <span class="keyword">AS</span> <span class="keyword">num</span> </div><div class="line"><span class="keyword">FROM</span> gzszf_meeting_notice_org_staff </div><div class="line"><span class="keyword">WHERE</span> meetingId=<span class="string">'318'</span> <span class="keyword">AND</span> isDelet=<span class="number">0</span> </div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> uid <span class="keyword">HAVING</span> <span class="keyword">num</span>&gt;N</div></pre></td></tr></table></figure>
+<blockquote>
+<p>批量插入</p>
+</blockquote>
+<ol>
+<li>数据量大的时候，先忽略掉索引，结束后再恢复，可以提高速度<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'log_bin_trust_function_creators'</span>;</div><div class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> log_bin_trust_function_creators=<span class="number">1</span>;</div></pre></td></tr></table></figure>
+</li>
+</ol>
 
           
         

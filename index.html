@@ -246,6 +246,240 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/26/Windows10/" itemprop="url">
+                  Windows10
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-26T03:08:12+08:00" content="2018-03-26">
+              2018-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/26/Windows10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/26/Windows10/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>80端口被占用</p>
+</blockquote>
+<h3 id="步骤如下："><a href="#步骤如下：" class="headerlink" title="步骤如下："></a>步骤如下：</h3><ol>
+<li>以管理员身份运行cmd</li>
+<li>输入：<code>net stop http</code></li>
+<li>完成后输入：<code>sc config http start=disabled</code></li>
+</ol>
+<p>其它方法：（若80端口不能被解除占用，可使用以下解决方案）</p>
+<h3 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h3><ol>
+<li>Ctrl + x ，然后选择 “计算机管理” ，展开 “服务和应用程序” ，找到 “服务”;</li>
+<li>找到“World Wide Web Publishing Service” ，双击打开后，将启动类型改为手动，更改服务状态为 “停止”;</li>
+<li><p>如果80端口仍然被占用，则还需要停止以下几个服务：</p>
+<p> “SSDP Discovery”</p>
+<p> “Print Spooler”</p>
+<p> “HomeGroup Provider”</p>
+<p> “Function Discovery Resource Publication”</p>
+<p> “Function Discovery Provider Host”</p>
+</li>
+</ol>
+<h3 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h3><ol>
+<li>以管理员身份运行regedit;</li>
+<li>打开键值：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\HTTP;</li>
+<li>在右边找到Start这一项，将其改为0;</li>
+<li>重启系统，System进程不会占用80端口.</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/22/设计注意事项/" itemprop="url">
+                  设计注意事项
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-22T11:55:36+08:00" content="2018-03-22">
+              2018-03-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/22/设计注意事项/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/22/设计注意事项/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<ol>
+<li>留意数据量大时，对用户的影响</li>
+</ol>
+</blockquote>
+<ul>
+<li>例如：日常工作里对部门、人员有个默认的排序，而涉及到某一个具体业务时想查看哪些反馈、哪些未反馈，不方便对比</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/12/19/Redis从入门到精通/" itemprop="url">
                   Redis从入门到精通
                 </a>
@@ -1347,233 +1581,6 @@ var_dump($val);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/19/ECMAScript-6入门/" itemprop="url">
-                  ECMAScript 6入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-19T10:02:20+08:00" content="2017-09-19">
-              2017-09-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/09/19/ECMAScript-6入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/19/ECMAScript-6入门/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>注：以下均是在 浏览器的 ES6 环境中</p>
-</blockquote>
-<ol>
-<li>避免在块级作用域内声明函数，如果确实需要，也应写成函数表达式，而不是函数声明语句<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//函数声明语句</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">let</span> a = <span class="string">'secret'</span>;</div><div class="line">     <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> a;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//函数表达式</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">let</span> a = <span class="string">'secret'</span>;</div><div class="line">     <span class="keyword">let</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> a;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/09/同一账号多设备同时登录/" itemprop="url">
-                  同一账号多设备同时登录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-09T22:54:18+08:00" content="2017-09-09">
-              2017-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/09/09/同一账号多设备同时登录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/09/同一账号多设备同时登录/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="多端同时登录"><a href="#多端同时登录" class="headerlink" title="多端同时登录"></a>多端同时登录</h2><p>1.概述</p>
-<p>session多端登录，就是保持session的一致性。由于session是唯一的，所以要保持session的唯一性，可以将session存放在一个地方，到时候大家取的时候，统一从一个地方取session，这样就保持了session的一致。</p>
-<p>2.实现session的方法</p>
-<p>其实就是将session存放在一个地方，大家存取就好了。至于其他都是附加的，原理就是酱紫。一般实现的方法有：</p>
-<p>1）nfs文件共享系统，让不同项目访问同一个共享的文件。</p>
-<p>2）存放在mysql。</p>
-<p>3）存放在内存数据库，比如redis，memcache等。</p>
-<p>4）基于cookie的共享。这个需要域名统一。</p>
-<p>3.关于redis的session共享，其他类似</p>
-<p>1)php.ini里面存放得有session的存放地址，可以将session的地址改成redis存放session的地址。session.save_path<br>但是一般这种服务器端会有访问控制。所以可以参考第二种方法</p>
-<p>2)重写session，通过php代码更改session的存放路径什么的。php有相关的session重写的类。</p>
-<h2 id="同一浏览器，登录多个用户"><a href="#同一浏览器，登录多个用户" class="headerlink" title="同一浏览器，登录多个用户"></a>同一浏览器，登录多个用户</h2><p>背景：在同一个浏览器里登录两个用户，第二个用户会把第一个用户的信息覆盖掉（使用session获取用户信息）</p>
-<p>原因：存入session的key是同一个</p>
-<blockquote>
-<p>解决方案：</p>
-</blockquote>
-<p>在后台将登陆信息放入session时，创建不同的key。session.setAttribute(“用户名+key”, user);</p>
-<h2 id="即时通讯系统中如何实现：多端（PC、mobile）同时在线"><a href="#即时通讯系统中如何实现：多端（PC、mobile）同时在线" class="headerlink" title="即时通讯系统中如何实现：多端（PC、mobile）同时在线"></a>即时通讯系统中如何实现：多端（PC、mobile）同时在线</h2><p>参考：<a href="http://blog.csdn.net/zhuweisky/article/details/50553427" target="_blank" rel="external">http://blog.csdn.net/zhuweisky/article/details/50553427</a></p>
-<h2 id="多终端同时登录，当一个终端修改密码后，其它终端如何处理？"><a href="#多终端同时登录，当一个终端修改密码后，其它终端如何处理？" class="headerlink" title="多终端同时登录，当一个终端修改密码后，其它终端如何处理？"></a>多终端同时登录，当一个终端修改密码后，其它终端如何处理？</h2><p>目前有一个项目，同时允许Web端，Moible端，Pad端登录。当同时登录后，现在Web端修改了用户密码后，按道理说Mobile端及Pad端再操作时用户身份要立即失效，必须退出并重新登录验证后才有效。<br>如何实现通知其它终端立即失效呢？</p>
-<p>如果是移动客户端的话，我觉得可以主动推送通知。 网页端的么，想了一个方案1 .把所有已登录的用户保存在一块内存中，用户的每个操作都要另外检验这个内存中是否有该用户的数据，如果没有，就强制重新登录。当有一个用户修改了密码以后，就对当前所有登录这个用户名的账号清掉他的数据，此时，他再操作就要求重新登录了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1619,7 +1626,7 @@ var_dump($val);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1629,7 +1636,7 @@ var_dump($val);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

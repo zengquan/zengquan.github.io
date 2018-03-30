@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="实战," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="System对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类System没有提供构造函数，getProperties()获取当前的系统属性。1234567891011121314151617181920212223242526272829303132333435/*System：类中的方法和属性都">
-<meta name="keywords" content="Java">
+<meta name="description" content="留意数据量大时，对用户的影响    例如：日常工作里对部门、人员有个默认的排序，而涉及到某一个具体业务时想查看哪些反馈、哪些未反馈，不方便对比">
+<meta name="keywords" content="实战">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础IO输入输出01">
-<meta property="og:url" content="http://yoursite.com/2016/11/16/Java基础IO输入输出01/index.html">
+<meta property="og:title" content="设计注意事项">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/设计注意事项/index.html">
 <meta property="og:site_name" content="新的篇章">
-<meta property="og:description" content="System对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类System没有提供构造函数，getProperties()获取当前的系统属性。1234567891011121314151617181920212223242526272829303132333435/*System：类中的方法和属性都">
+<meta property="og:description" content="留意数据量大时，对用户的影响    例如：日常工作里对部门、人员有个默认的排序，而涉及到某一个具体业务时想查看哪些反馈、哪些未反馈，不方便对比">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-11-16T14:02:55.879Z">
+<meta property="og:updated_time" content="2018-03-22T04:02:29.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础IO输入输出01">
-<meta name="twitter:description" content="System对象导语： 学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。  类System没有提供构造函数，getProperties()获取当前的系统属性。1234567891011121314151617181920212223242526272829303132333435/*System：类中的方法和属性都">
+<meta name="twitter:title" content="设计注意事项">
+<meta name="twitter:description" content="留意数据量大时，对用户的影响    例如：日常工作里对部门、人员有个默认的排序，而涉及到某一个具体业务时想查看哪些反馈、哪些未反馈，不方便对比">
 
 
 
@@ -116,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/16/Java基础IO输入输出01/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/22/设计注意事项/"/>
 
-  <title> Java基础IO输入输出01 | 新的篇章 </title>
+  <title> 设计注意事项 | 新的篇章 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +248,7 @@
             
             
               
-                Java基础IO输入输出01
+                设计注意事项
               
             
           </h1>
@@ -260,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T21:35:31+08:00" content="2016-11-16">
-              2016-11-16
+            <time itemprop="dateCreated" datetime="2018-03-22T11:55:36+08:00" content="2018-03-22">
+              2018-03-22
             </time>
           </span>
 
@@ -271,8 +271,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/16/Java基础IO输入输出01/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出01/" itemprop="commentsCount"></span>
+                <a href="/2018/03/22/设计注意事项/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/22/设计注意事项/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,10 +295,14 @@
       
 
       
-        <h1 id="System对象"><a href="#System对象" class="headerlink" title="System对象"></a>System对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
-<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+        <blockquote>
+<ol>
+<li>留意数据量大时，对用户的影响</li>
+</ol>
 </blockquote>
-<h2 id="类System"><a href="#类System" class="headerlink" title="类System"></a>类System</h2><p>没有提供构造函数，getProperties()获取当前的系统属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">System：类中的方法和属性都是静态的。</div><div class="line">out：标准输出，默认是控制台。</div><div class="line"><span class="keyword">in</span>：标准输入，默认是键盘</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">class SystemDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Properties prop = System.getProperties();</div><div class="line">        //因为Properties 是Hashtable的子类，也就是Map集合的一个子对象.</div><div class="line">        //那么可以通过map的方法取出该集合中的对象</div><div class="line">        //该集合中存储都是字符串，没有泛型定义。</div><div class="line">        </div><div class="line">        //如何在系统中自定义一些特定的信息呢？</div><div class="line">        System.setProperty(<span class="string">"mykey"</span>,<span class="string">"myvalue"</span>);</div><div class="line">        </div><div class="line">        //获取指定属性信息</div><div class="line">        String value = System.getProperty(<span class="string">"os.name"</span>);</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"value="</span> + value);</div><div class="line">        </div><div class="line">        //可不可以在jvm启动时，动态加载一些属性信息呢？</div><div class="line">        //可以在jvm启动的时候：java -Dhaha=qqqq SystemDemo</div><div class="line">        String v = System.getProperty(<span class="string">"haha"</span>);</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"v="</span> + v);</div><div class="line">        </div><div class="line">        /*获取所有属性信息</div><div class="line">        <span class="keyword">for</span>(Object obj : prop.keySet())&#123;</div><div class="line">            String value = prop.get(obj);</div><div class="line">            System.out.println(obj + <span class="string">"::"</span> + value);</div><div class="line">        &#125;</div><div class="line">        */</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>例如：日常工作里对部门、人员有个默认的排序，而涉及到某一个具体业务时想查看哪些反馈、哪些未反馈，不方便对比</li>
+</ul>
 
       
     </div>
@@ -320,7 +324,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag">#Java</a>
+            <a href="/tags/实战/" rel="tag">#实战</a>
           
         </div>
       
@@ -329,16 +333,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/07/《创世纪》语录/" rel="next" title="《创世纪》语录">
-                <i class="fa fa-chevron-left"></i> 《创世纪》语录
+              <a href="/2017/12/19/Redis从入门到精通/" rel="next" title="Redis从入门到精通">
+                <i class="fa fa-chevron-left"></i> Redis从入门到精通
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/16/Java基础IO输入输出02/" rel="prev" title="Java基础IO输入输出02">
-                Java基础IO输入输出02 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/26/Windows10/" rel="prev" title="Windows10">
+                Windows10 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -365,8 +369,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/16/Java基础IO输入输出01/"
-           data-title="Java基础IO输入输出01" data-url="http://yoursite.com/2016/11/16/Java基础IO输入输出01/">
+      <div class="ds-thread" data-thread-key="2018/03/22/设计注意事项/"
+           data-title="设计注意事项" data-url="http://yoursite.com/2018/03/22/设计注意事项/">
       </div>
     
   </div>
@@ -450,7 +454,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#System对象"><span class="nav-number">1.</span> <span class="nav-text">System对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导语："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">导语：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类System"><span class="nav-number">1.1.</span> <span class="nav-text">类System</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

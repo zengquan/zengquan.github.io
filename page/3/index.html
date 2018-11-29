@@ -246,6 +246,319 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/16/Java基础IO输入输出04/" itemprop="url">
+                  Java基础IO输入输出04
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-16T21:58:03+08:00" content="2016-11-16">
+              2016-11-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/16/Java基础IO输入输出04/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出04/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Calendar对象"><a href="#Calendar对象" class="headerlink" title="Calendar对象"></a>Calendar对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
+<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+</blockquote>
+<h2 id="类Calendar"><a href="#类Calendar" class="headerlink" title="类Calendar"></a>类Calendar</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Calendar对象</div><div class="line">另请参见：</div><div class="line">DateFormat、Calendar、TimeZone</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">import java.text.*;</div><div class="line">class CalendarDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        </div><div class="line">        //方法一：</div><div class="line">        Date d = new Date();</div><div class="line">        SimpleDateFormat sdf = new SimpleDateFormat(<span class="string">"yyyy"</span>);</div><div class="line">        String year =  sdf.format(d);//返回的是字符串，我想加一年或减一年比较麻烦</div><div class="line">        System.out.println(year);</div><div class="line">        </div><div class="line">        //方法二：</div><div class="line">        Calendar c = Calendar.getInstance();</div><div class="line">        </div><div class="line">        //用查表法来改写</div><div class="line">        String[] mons = &#123;<span class="string">"一月"</span>,<span class="string">"二月"</span>,<span class="string">"三月"</span>,<span class="string">"四月"</span>,<span class="string">"五月"</span>,<span class="string">"六月"</span>,<span class="string">"七月"</span>,<span class="string">"八月"</span>,<span class="string">"九月"</span>,<span class="string">"十月"</span>,<span class="string">"十一月"</span>,<span class="string">"十二月"</span>&#125;;</div><div class="line">        int index = c.get(Calendar.MONTH);</div><div class="line">        </div><div class="line">        String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>,<span class="string">"星期日"</span>&#125;;</div><div class="line">        int index1 = c.get(Calendar.DAY_OF_WEEK);</div><div class="line">        </div><div class="line">        sop(c.get(Calendar.YEAR)+<span class="string">"年"</span>);</div><div class="line">        //sop((c.get(Calendar.MONTH)+1)+<span class="string">"月"</span>);</div><div class="line">        sop(mons[index]);</div><div class="line">        sop(c.get(Calendar.DAY_OF_MONTH)+<span class="string">"日"</span>);</div><div class="line">        //sop(<span class="string">"星期"</span>+c.get(Calendar.DAY_OF_WEEK));</div><div class="line">        sop(weeks[index1]);</div><div class="line">        </div><div class="line">        //一些方法</div><div class="line">        Calendar c1 = Calendar.getInstance();</div><div class="line">        //c1.set(2012,2,23);</div><div class="line">        //时间量的偏移</div><div class="line">        c1.add(Calendar.YEAR,4);//加4年</div><div class="line">        printCalendar(c1);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void sop(Object obj)&#123;</div><div class="line">        System.out.println(obj);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void printCalendar(Calendar c)&#123;</div><div class="line">        //用查表法来改写</div><div class="line">                String[] mons = &#123;<span class="string">"一月"</span>,<span class="string">"二月"</span>,<span class="string">"三月"</span>,<span class="string">"四月"</span>,<span class="string">"五月"</span>,<span class="string">"六月"</span>,<span class="string">"七月"</span>,<span class="string">"八月"</span>,<span class="string">"九月"</span>,<span class="string">"十月"</span>,<span class="string">"十一月"</span>,<span class="string">"十二月"</span>&#125;;</div><div class="line">                int index = c.get(Calendar.MONTH);</div><div class="line">                </div><div class="line">                String[] weeks = &#123;<span class="string">""</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>,<span class="string">"星期日"</span>&#125;;</div><div class="line">                int index1 = c.get(Calendar.DAY_OF_WEEK);</div><div class="line">                </div><div class="line">                sop(c.get(Calendar.YEAR)+<span class="string">"年"</span>);</div><div class="line">                //sop((c.get(Calendar.MONTH)+1)+<span class="string">"月"</span>);</div><div class="line">                sop(mons[index]);</div><div class="line">                sop(c.get(Calendar.DAY_OF_MONTH)+<span class="string">"日"</span>);</div><div class="line">                //sop(<span class="string">"星期"</span>+c.get(Calendar.DAY_OF_WEEK));</div><div class="line">                sop(weeks[index1]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/16/Java基础IO输入输出03/" itemprop="url">
+                  Java基础IO输入输出03
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-16T21:57:52+08:00" content="2016-11-16">
+              2016-11-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/16/Java基础IO输入输出03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出03/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
+<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+</blockquote>
+<h2 id="类Date"><a href="#类Date" class="headerlink" title="类Date"></a>类Date</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Date对象</div><div class="line">另请参见：</div><div class="line">DateFormat、Calendar、TimeZone</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">import java.text.*;</div><div class="line">class DateDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        Date d = new Date();</div><div class="line">        System.out.println(d);//打印的时间看不懂，希望有些格式</div><div class="line">        </div><div class="line">        //将模式封装到SimpleDateFormat对象中.</div><div class="line">        SimpleDateFormat sdf = new SimpleDateFormat(<span class="string">"yyyy年MM月dd日E hh:mm:ss"</span>);</div><div class="line">        </div><div class="line">        //调用format方式让模式格式化指定的对象.</div><div class="line">        String time =  sdf.format(d);</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"time="</span> + time);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/16/Java基础IO输入输出02/" itemprop="url">
+                  Java基础IO输入输出02
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-16T21:57:19+08:00" content="2016-11-16">
+              2016-11-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/16/Java基础IO输入输出02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出02/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Runtime对象"><a href="#Runtime对象" class="headerlink" title="Runtime对象"></a>Runtime对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
+<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
+</blockquote>
+<h2 id="类Runtime"><a href="#类Runtime" class="headerlink" title="类Runtime"></a>类Runtime</h2><ol>
+<li>没有提供构造函数：代表它不能直接创建对象</li>
+<li>它有方法摘要：一般无构造函数，类中方法都是静态的。但是它方法摘要中有非静态的方法，且返回值一定是返回本类类型的。它在应用程序运行时创建，我们只需用就可以了（即：单例模式）。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Runtime对象</div><div class="line">该类并没有提供构造函数。</div><div class="line">说明不可以new对象，那么会直接想到该类中的方法都是静态的。</div><div class="line">发现该类中还有非静态方法。</div><div class="line">说明该类肯定会提供了方法获取本类对象。而且该方法是静态的，并且返回值类型时本类类型。</div><div class="line">由这个特点可以看出该类使用了单例设计模式完成。</div><div class="line"></div><div class="line">该方式是static Runtime getRuntime();</div><div class="line">*/</div><div class="line">class RuntimeDemo &#123;</div><div class="line">    public static void main(String[] args) throw Exception&#123;</div><div class="line">        Runtime r = Runtime.getRuntime();</div><div class="line">        </div><div class="line">        //<span class="built_in">exec</span>可以执行命令，（打开扫雷：先找该路径，找不到就到系统(环境变量的)目录找，找不到就报异常)</div><div class="line">        Process p = r.exec(<span class="string">"c:\\winmine.exe"</span>);  //Process p = r.exec(<span class="string">"notepad.exe SystemDemo.java"</span>); //记事本打开SystemDemo.java</div><div class="line">        </div><div class="line">        </div><div class="line">        //Thread.sleep(4000);//等待4秒</div><div class="line">        //p.destroy();//杀手进程</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/16/Java基础IO输入输出01/" itemprop="url">
                   Java基础IO输入输出01
                 </a>
@@ -813,7 +1126,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -823,7 +1136,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

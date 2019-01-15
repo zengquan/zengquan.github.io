@@ -246,6 +246,112 @@
             
               
                 
+                <a class="post-title-link" href="/2017/11/04/webpack中output配置项chunkFilename/" itemprop="url">
+                  webpack中output配置项chunkFilename
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-04T22:11:48+08:00" content="2017-11-04">
+              2017-11-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/11/04/webpack中output配置项chunkFilename/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/04/webpack中output配置项chunkFilename/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="chunkFilename"><a href="#chunkFilename" class="headerlink" title="chunkFilename"></a>chunkFilename</h1><p>chunkFilename和webpack.optimize.CommonsChunkPlugin插件的作用差不多，都是用来将公共模块提取出来，但是用法不一样，这里主要介绍chunkFilename的使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">entry:&#123;</div><div class="line">    main:__dirname + <span class="string">'/app/main.js'</span>,</div><div class="line">    index:__dirname + <span class="string">'/app/index.js'</span>      </div><div class="line">&#125;,</div><div class="line">output:&#123;</div><div class="line">    path:__dirname + <span class="string">'/public'</span>, <span class="comment">//通过HtmlWebpackPlugin插件生成的html文件存放在这个目录下面</span></div><div class="line">    filename:<span class="string">'/js/[name].js'</span>, <span class="comment">//编译生成的js文件存放到根目录下面的js目录下面,如果js目录不存在则自动创建</span></div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * chunkFilename用来打包require.ensure方法中引入的模块,如果该方法中没有引入任何模块则不会生成任何chunk块文件</span></div><div class="line"><span class="comment">     * 比如在main.js文件中,require.ensure([],function(require)&#123;alert(11);&#125;),这样不会打包块文件</span></div><div class="line"><span class="comment">     * 只有这样才会打包生成块文件require.ensure([],function(require)&#123;alert(11);require('./greeter')&#125;)</span></div><div class="line"><span class="comment">     * 或者这样require.ensure(['./greeter'],function(require)&#123;alert(11);&#125;)</span></div><div class="line"><span class="comment">     * chunk的hash值只有在require.ensure中引入的模块发生变化,hash值才会改变</span></div><div class="line"><span class="comment">     * 注意:对于不是在ensure方法中引入的模块,此属性不会生效,只能用CommonsChunkPlugin插件来提取</span></div><div class="line"><span class="comment">     * */</span></div><div class="line">    chunkFilename:<span class="string">'js/[chunkhash:8].chunk.js'</span></div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>如果开了web-dev-server服务器，当require.ensure方法中引入的模块发生变化,网站中加载的chunk.js文件的hash值会自动变化,而不需要手动重新打包或者重新运行web-dev-server。因为它会自动重新编译,但现有的chunk.js文件的hash并不会更新，只是网站中加载的chunk.js文件更新了。如图:</p>
+<p><img src="http://images2015.cnblogs.com/blog/614638/201612/614638-20161209001507116-381803678.png" alt=""></p>
+<p>另外特别注意:</p>
+<p>如果某个文件只是引入了依赖的模块，却没有调用模块exports出来的方法，则该依赖模块里的代码不会执行，但网站还是会加载该chunk文件,如果exports的不是方法，而是其他类型的数据，则该依赖模块里的代码会执行。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/10/18/js类的写法/" itemprop="url">
                   js类的写法
                 </a>
@@ -1257,109 +1363,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/Java基础IO输入输出05/" itemprop="url">
-                  Java基础IO输入输出05
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T21:58:13+08:00" content="2016-11-16">
-              2016-11-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/16/Java基础IO输入输出05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/Java基础IO输入输出05/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Math-Random对象"><a href="#Math-Random对象" class="headerlink" title="Math-Random对象"></a>Math-Random对象</h1><h4 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h4><blockquote>
-<p>学习的目的：不是掌握对象的方法，而是要学会如何使用API、如何使用API中的对象实现一些小功能，方法只需简单记下用什么对象就可以了。</p>
-</blockquote>
-<h2 id="类Date"><a href="#类Date" class="headerlink" title="类Date"></a>类Date</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">Math对象</div><div class="line">*/</div><div class="line">import java.util.*;</div><div class="line">import java.text.*;</div><div class="line">class MathDemo &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        //生成0到1间的随机数，也可以用Random类</div><div class="line">        <span class="keyword">for</span>(int x=0;x&lt;10; x++)&#123;</div><div class="line">            double d = Math.random();// [0,1)</div><div class="line">            //int d = r.nextInt(10);[0,10)</div><div class="line">            sop(d);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void <span class="function"><span class="title">show</span></span>()&#123;</div><div class="line">        double d = Math.ceil(12.34);//向上取整</div><div class="line">        double d1 = Math.floor(12.34);//向下取整</div><div class="line">        long l = Math.round(12.54);//四舍五入</div><div class="line">        double d2 = Math.pow(2,3);//2的3次方</div><div class="line">        </div><div class="line">        </div><div class="line">        sop(<span class="string">"d="</span>+d);</div><div class="line">        sop(<span class="string">"d1="</span>+d1);</div><div class="line">        sop(<span class="string">"l="</span>+l);</div><div class="line">        sop(<span class="string">"d2="</span>+d2);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void sop(Object obj)&#123;</div><div class="line">        System.out.println(obj);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1405,7 +1408,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1415,7 +1418,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1452,7 +1455,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

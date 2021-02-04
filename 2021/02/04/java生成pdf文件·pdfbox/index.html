@@ -1,0 +1,647 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="PDF生成方案比较 开源框架支持   iText：生成PDF文档，还支持将XML、Html文件转化为PDF文件  Apache PDFBox：生成、合成PDF文档  docx4j：生成docx、pptx、xlsx文档，支持转换为PDF格式    比较   iText开源协议为AGPL，而其他两个框架协议均为Apache License V2.0 使用PDFBox生成PDF就像画图似的，文字和图像根">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java生成pdf文件·pdfbox">
+<meta property="og:url" content="http://yoursite.com/2021/02/04/java生成pdf文件·pdfbox/index.html">
+<meta property="og:site_name" content="新的篇章">
+<meta property="og:description" content="PDF生成方案比较 开源框架支持   iText：生成PDF文档，还支持将XML、Html文件转化为PDF文件  Apache PDFBox：生成、合成PDF文档  docx4j：生成docx、pptx、xlsx文档，支持转换为PDF格式    比较   iText开源协议为AGPL，而其他两个框架协议均为Apache License V2.0 使用PDFBox生成PDF就像画图似的，文字和图像根">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-02-04T03:44:08.771Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java生成pdf文件·pdfbox">
+<meta name="twitter:description" content="PDF生成方案比较 开源框架支持   iText：生成PDF文档，还支持将XML、Html文件转化为PDF文件  Apache PDFBox：生成、合成PDF文档  docx4j：生成docx、pptx、xlsx文档，支持转换为PDF格式    比较   iText开源协议为AGPL，而其他两个框架协议均为Apache License V2.0 使用PDFBox生成PDF就像画图似的，文字和图像根">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/02/04/java生成pdf文件·pdfbox/"/>
+
+  <title> java生成pdf文件·pdfbox | 新的篇章 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">新的篇章</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java生成pdf文件·pdfbox
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-02-04T09:12:13+08:00" content="2021-02-04">
+              2021-02-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2021/02/04/java生成pdf文件·pdfbox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2021/02/04/java生成pdf文件·pdfbox/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="PDF生成方案比较"><a href="#PDF生成方案比较" class="headerlink" title="PDF生成方案比较"></a>PDF生成方案比较</h2><blockquote>
+<p>开源框架支持</p>
+</blockquote>
+<ul>
+<li><p>iText：生成PDF文档，还支持将XML、Html文件转化为PDF文件</p>
+</li>
+<li><p>Apache PDFBox：生成、合成PDF文档</p>
+</li>
+<li><p>docx4j：生成docx、pptx、xlsx文档，支持转换为PDF格式</p>
+</li>
+</ul>
+<blockquote>
+<p>比较</p>
+</blockquote>
+<ul>
+<li>iText开源协议为AGPL，而其他两个框架协议均为Apache License V2.0</li>
+<li>使用PDFBox生成PDF就像画图似的，文字和图像根据页面坐标画上去的，需要根据字数手动换行</li>
+<li>docx4j用来生成docx文档，提供了将WORD文档转换为PDF文档的功能，并不能直接生成PDF文档</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th style="text-align:center">格式复杂</th>
+<th style="text-align:center">格式简单 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据量大</td>
+<td style="text-align:center">docx4j+freemarker</td>
+<td style="text-align:center">docx4j或PDFBox</td>
+</tr>
+<tr>
+<td>数据量小</td>
+<td style="text-align:center">docx4j</td>
+<td style="text-align:center">PDFBox</td>
+</tr>
+</tbody>
+</table>
+<p>鉴于iText的协议为AGPL具有极强的传染性，本文以<em>Apache PDFBox</em>为例来讲解</p>
+<h2 id="pdfbox通过pdf模板生成PDF文件"><a href="#pdfbox通过pdf模板生成PDF文件" class="headerlink" title="pdfbox通过pdf模板生成PDF文件"></a>pdfbox通过pdf模板生成PDF文件</h2><p>本人在项目中遇到的是基于pdf的form表单模板来生成pdf文件</p>
+<ul>
+<li>Apache PDFBox Github：<a href="https://github.com/apache/pdfbox" target="_blank" rel="external">https://github.com/apache/pdfbox</a></li>
+</ul>
+<blockquote>
+<p>通过Maven引入依赖</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.apache.pdfbox&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;pdfbox-app&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;2.0.22&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用示例</p>
+</blockquote>
+<ol>
+<li>准备好表单数据</li>
+<li>加载pdf模板文件</li>
+<li>加载自定义字体</li>
+<li>遍历表单属性并填充值</li>
+<li>导出PDF文件</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.panda.copyright;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.fontbox.ttf.OTFParser;</div><div class="line"><span class="keyword">import</span> org.apache.fontbox.ttf.OpenTypeFont;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.cos.COSArray;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.cos.COSDictionary;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.cos.COSName;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.*;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.common.PDRectangle;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.font.PDType0Font;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.CCITTFactory;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.JPEGFactory;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceDictionary;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceStream;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDField;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDPushButton;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDTextField;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.util.filetypedetector.FileType;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.util.filetypedetector.FileTypeDetector;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</div><div class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="keyword">import</span> java.net.URL;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.ConcurrentHashMap;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PdfGenerate</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		<span class="comment">//1. 准备表单数据</span></div><div class="line">		Map&lt;String,String&gt; mappers = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</div><div class="line">		mappers.put(<span class="string">"name"</span>, <span class="string">"幸福美少女"</span>);</div><div class="line">		mappers.put(<span class="string">"authors"</span>,<span class="string">"新的篇章"</span>);</div><div class="line">		mappers.put(<span class="string">"publish_time"</span>,<span class="string">"2021-02-04"</span>);</div><div class="line">		mappers.put(<span class="string">"qr_code"</span>,<span class="string">"/temp/pdfbox/images/3a7b285459e.png"</span>);</div><div class="line">		mappers.put(<span class="string">"pro_file1"</span>,<span class="string">"/temp/pdfbox/images/file1.jpg"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//2. 加载pdf模板文件</span></div><div class="line">		InputStream in = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			String outPath = <span class="string">"/temp/pdfbox/copyright_20210204.pdf"</span>;</div><div class="line">			in = PdfGenerate.class.getResourceAsStream(<span class="string">"/template/copyright.pdf"</span>);</div><div class="line">			PDDocument document = PDDocument.load(in);</div><div class="line">			</div><div class="line">			</div><div class="line">			<span class="comment">//3. 加载自定义字体</span></div><div class="line">			PDAcroForm form = document.getDocumentCatalog().getAcroForm();</div><div class="line">			</div><div class="line">			<span class="comment">//ttf字体,实际上还有PDType1Font，PDType3Font，一般ttf就用PDType0Font足以</span></div><div class="line">			PDFont ttfFont= PDType0Font.load(document, <span class="keyword">new</span> File(<span class="string">"/temp/fonts/Dengl.ttf"</span>));</div><div class="line">			</div><div class="line">			<span class="comment">//otf字体</span></div><div class="line">			OTFParser otfParser = <span class="keyword">new</span> OTFParser();</div><div class="line">            OpenTypeFont otf = otfParser.parse(PdfGenerate.class.getResourceAsStream(<span class="string">"/template/copyright.otf"</span>));</div><div class="line">            PDType0Font otfFont = PDType0Font.load(document,otf, <span class="keyword">false</span>);</div><div class="line">			</div><div class="line">			</div><div class="line">            <span class="comment">/* 设置全局默认字体 或某个页面设置字体：实例化字体对象了之后，将它添加到PDPage的Resource中。</span></div><div class="line"><span class="comment">			PDPage page= new PDPage(PDRectangle.A4);</span></div><div class="line"><span class="comment">			page.getResources().add(ttfFont);*/</span></div><div class="line">            PDResources resources = <span class="keyword">new</span> PDResources();</div><div class="line">			<span class="comment">//字体名称跟模板中设置的有关</span></div><div class="line">            resources.put(COSName.getPDFName(<span class="string">"AdobeSongStd-Light"</span>), otfFont);</div><div class="line">            resources.put(COSName.getPDFName(<span class="string">"F4"</span>), otfFont);</div><div class="line">            form.setDefaultResources(resources);</div><div class="line">			</div><div class="line">			</div><div class="line">			<span class="comment">//可设置单个表单属性的字体及格式			</span></div><div class="line">            String otffont_name = form.getDefaultResources().add(otfFont).getName();</div><div class="line">			</div><div class="line">			<span class="comment">//4. 遍历表单属性并填充值</span></div><div class="line">			List&lt;PDField&gt; fields = document.getDocumentCatalog().getAcroForm().getFields();</div><div class="line">			<span class="keyword">for</span> (PDField field : fields) &#123;</div><div class="line">				<span class="keyword">if</span> (<span class="string">"qr_code"</span>.equals(field.getFullyQualifiedName()))&#123;</div><div class="line">                    setImgField(document, field, certImg.get(<span class="string">"qr_code"</span>),<span class="number">1</span>);</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"pro_file1"</span>.equals(field.getFullyQualifiedName()))&#123;</div><div class="line">                    setImgField(document, field, certImg.get(<span class="string">"pro_file1"</span>),<span class="number">1</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">					PDTextField textField = (PDTextField) field;</div><div class="line">					</div><div class="line">					<span class="keyword">if</span>(<span class="string">"name"</span>.equals(field.getFullyQualifiedName())&#123;</div><div class="line">						<span class="comment">//设置字体 字号</span></div><div class="line">						textField.setDefaultAppearance(String.format(<span class="string">"/%s 16 Tf 0 g"</span>, font_name));</div><div class="line">					&#125;</div><div class="line">					</div><div class="line">					<span class="keyword">if</span>(<span class="string">"authors"</span>.equals(field.getFullyQualifiedName())&#123;</div><div class="line">						<span class="comment">//修改位置</span></div><div class="line">						PDAnnotationWidget widget = textField.getWidgets().get(<span class="number">0</span>);</div><div class="line">                        PDRectangle rect = <span class="keyword">new</span> PDRectangle(name.getLowerLeftX(),<span class="number">368.15F</span>,name.getWidth(),name.getHeight());</div><div class="line">                        widget.setRectangle(rect);</div><div class="line">						<span class="comment">//设置字体 字号</span></div><div class="line">						textField.setDefaultAppearance(String.format(<span class="string">"/%s 12 Tf 0 g"</span>, font_name));</div><div class="line">					&#125;</div><div class="line">					</div><div class="line">					<span class="comment">//publish_time使用全局默认设置的字体</span></div><div class="line">					</div><div class="line">					<span class="comment">//设置值</span></div><div class="line">					<span class="keyword">if</span>(mappers.containsKey(field.getFullyQualifiedName()))&#123;</div><div class="line">						field.setValue(mappers.get(field.getFullyQualifiedName()));</div><div class="line">					&#125;</div><div class="line">					<span class="comment">//设置只读，表单内容不可编辑</span></div><div class="line">                    field.setReadOnly(<span class="keyword">true</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="comment">//5. 保持pdf文件</span></div><div class="line">			document.save(outPath);</div><div class="line">			<span class="comment">//最后需要关闭它</span></div><div class="line">			document.close();</div><div class="line">		&#125;<span class="keyword">catch</span>(IOException)&#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">if</span>(in!=<span class="keyword">null</span>)&#123;</div><div class="line">				in.close();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * 处理图片 </span></div><div class="line"><span class="comment">	*/</span></div><div class="line">	 <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setImgField</span><span class="params">(PDDocument document, PDField field, String filePath, <span class="keyword">int</span> pageIndex)</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">        File imageFile = <span class="keyword">new</span> File(filePath);</div><div class="line">        <span class="keyword">if</span> (imageFile.exists())&#123;</div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">             * BufferedImage bufferedImage = ImageIO.read(imageFile);</span></div><div class="line"><span class="comment">             * PDImageXObject pdImageXObject = LosslessFactory.createFromImage(document, bufferedImage);</span></div><div class="line"><span class="comment">             */</span></div><div class="line">            PDImageXObject image = PDImageXObject.createFromFile(filePath, document);</div><div class="line">            PDRectangle rectangle = getFieldArea(field);</div><div class="line">            <span class="comment">//float size = rectangle.getHeight();</span></div><div class="line">            <span class="keyword">float</span> x = rectangle.getLowerLeftX();</div><div class="line">            <span class="keyword">float</span> y = rectangle.getLowerLeftY();</div><div class="line">            <span class="keyword">float</span> imageHeight = image.getHeight();</div><div class="line">            <span class="keyword">float</span> imageWidth = image.getWidth();</div><div class="line">            <span class="keyword">float</span> signRectHeight = rectangle.getHeight(), sighRectWidth = rectangle.getWidth();</div><div class="line"></div><div class="line">            PDPageContentStream contentStream = <span class="keyword">new</span> PDPageContentStream(document, document.getPage(pageIndex), PDPageContentStream.AppendMode.APPEND, <span class="keyword">true</span>);</div><div class="line">            <span class="keyword">float</span> imgBi = imageWidth/imageHeight;</div><div class="line">            <span class="keyword">float</span> signBi = sighRectWidth/signRectHeight;</div><div class="line">            <span class="keyword">float</span> margin = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (imgBi &gt; signBi)&#123;</div><div class="line">                <span class="keyword">float</span> recHeight = sighRectWidth*imageHeight/imageWidth;</div><div class="line">                margin = (signRectHeight-recHeight)/<span class="number">2</span>;</div><div class="line">                contentStream.drawImage(image, x, y + margin, sighRectWidth, recHeight);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">float</span> recWidth = signRectHeight*imageWidth/imageHeight;</div><div class="line">                margin = (sighRectWidth - recWidth)/<span class="number">2</span>;</div><div class="line">                contentStream.drawImage(image, x + margin, y,recWidth, signRectHeight);</div><div class="line">            &#125;</div><div class="line">            contentStream.close();</div><div class="line">            field.setReadOnly(<span class="keyword">true</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            System.err.println(<span class="string">"File "</span> + filePath + <span class="string">" not found"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * 获取文字坐标</span></div><div class="line"><span class="comment">	*/</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> PDRectangle <span class="title">getFieldArea</span><span class="params">(PDField field)</span> </span>&#123;</div><div class="line">        COSDictionary fieldDict = field.getCOSObject();</div><div class="line">        COSArray fieldAreaArray = (COSArray) fieldDict.getDictionaryObject(COSName.RECT);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PDRectangle(fieldAreaArray);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/26/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2021/02/04/java生成pdf文件·pdfbox/"
+           data-title="java生成pdf文件·pdfbox" data-url="http://yoursite.com/2021/02/04/java生成pdf文件·pdfbox/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="北辰" />
+          <p class="site-author-name" itemprop="name">北辰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF生成方案比较"><span class="nav-number">1.</span> <span class="nav-text">PDF生成方案比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pdfbox通过pdf模板生成PDF文件"><span class="nav-number">2.</span> <span class="nav-text">pdfbox通过pdf模板生成PDF文件</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zengquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

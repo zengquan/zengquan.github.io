@@ -246,6 +246,274 @@
             
               
                 
+                <a class="post-title-link" href="/2021/02/04/java生成pdf文件·pdfbox/" itemprop="url">
+                  java生成pdf文件·pdfbox
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-02-04T09:12:13+08:00" content="2021-02-04">
+              2021-02-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2021/02/04/java生成pdf文件·pdfbox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2021/02/04/java生成pdf文件·pdfbox/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PDF生成方案比较"><a href="#PDF生成方案比较" class="headerlink" title="PDF生成方案比较"></a>PDF生成方案比较</h2><blockquote>
+<p>开源框架支持</p>
+</blockquote>
+<ul>
+<li><p>iText：生成PDF文档，还支持将XML、Html文件转化为PDF文件</p>
+</li>
+<li><p>Apache PDFBox：生成、合成PDF文档</p>
+</li>
+<li><p>docx4j：生成docx、pptx、xlsx文档，支持转换为PDF格式</p>
+</li>
+</ul>
+<blockquote>
+<p>比较</p>
+</blockquote>
+<ul>
+<li>iText开源协议为AGPL，而其他两个框架协议均为Apache License V2.0</li>
+<li>使用PDFBox生成PDF就像画图似的，文字和图像根据页面坐标画上去的，需要根据字数手动换行</li>
+<li>docx4j用来生成docx文档，提供了将WORD文档转换为PDF文档的功能，并不能直接生成PDF文档</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th style="text-align:center">格式复杂</th>
+<th style="text-align:center">格式简单 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据量大</td>
+<td style="text-align:center">docx4j+freemarker</td>
+<td style="text-align:center">docx4j或PDFBox</td>
+</tr>
+<tr>
+<td>数据量小</td>
+<td style="text-align:center">docx4j</td>
+<td style="text-align:center">PDFBox</td>
+</tr>
+</tbody>
+</table>
+<p>鉴于iText的协议为AGPL具有极强的传染性，本文以<em>Apache PDFBox</em>为例来讲解</p>
+<h2 id="pdfbox通过pdf模板生成PDF文件"><a href="#pdfbox通过pdf模板生成PDF文件" class="headerlink" title="pdfbox通过pdf模板生成PDF文件"></a>pdfbox通过pdf模板生成PDF文件</h2><p>本人在项目中遇到的是基于pdf的form表单模板来生成pdf文件</p>
+<ul>
+<li>Apache PDFBox Github：<a href="https://github.com/apache/pdfbox" target="_blank" rel="external">https://github.com/apache/pdfbox</a></li>
+</ul>
+<blockquote>
+<p>通过Maven引入依赖</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.apache.pdfbox&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;pdfbox-app&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;2.0.22&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用示例</p>
+</blockquote>
+<ol>
+<li>准备好表单数据</li>
+<li>加载pdf模板文件</li>
+<li>加载自定义字体</li>
+<li>遍历表单属性并填充值</li>
+<li>导出PDF文件</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.panda.copyright;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.fontbox.ttf.OTFParser;</div><div class="line"><span class="keyword">import</span> org.apache.fontbox.ttf.OpenTypeFont;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.cos.COSArray;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.cos.COSDictionary;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.cos.COSName;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.*;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.common.PDRectangle;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.font.PDType0Font;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.CCITTFactory;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.JPEGFactory;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.annotation.PDAnnotationWidget;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceDictionary;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.annotation.PDAppearanceStream;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDField;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDPushButton;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.pdmodel.interactive.form.PDTextField;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.util.filetypedetector.FileType;</div><div class="line"><span class="keyword">import</span> org.apache.pdfbox.util.filetypedetector.FileTypeDetector;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</div><div class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="keyword">import</span> java.net.URL;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.ConcurrentHashMap;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PdfGenerate</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		<span class="comment">//1. 准备表单数据</span></div><div class="line">		Map&lt;String,String&gt; mappers = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</div><div class="line">		mappers.put(<span class="string">"name"</span>, <span class="string">"幸福美少女"</span>);</div><div class="line">		mappers.put(<span class="string">"authors"</span>,<span class="string">"新的篇章"</span>);</div><div class="line">		mappers.put(<span class="string">"publish_time"</span>,<span class="string">"2021-02-04"</span>);</div><div class="line">		mappers.put(<span class="string">"qr_code"</span>,<span class="string">"/temp/pdfbox/images/3a7b285459e.png"</span>);</div><div class="line">		mappers.put(<span class="string">"pro_file1"</span>,<span class="string">"/temp/pdfbox/images/file1.jpg"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//2. 加载pdf模板文件</span></div><div class="line">		InputStream in = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			String outPath = <span class="string">"/temp/pdfbox/copyright_20210204.pdf"</span>;</div><div class="line">			in = PdfGenerate.class.getResourceAsStream(<span class="string">"/template/copyright.pdf"</span>);</div><div class="line">			PDDocument document = PDDocument.load(in);</div><div class="line">			</div><div class="line">			</div><div class="line">			<span class="comment">//3. 加载自定义字体</span></div><div class="line">			PDAcroForm form = document.getDocumentCatalog().getAcroForm();</div><div class="line">			</div><div class="line">			<span class="comment">//ttf字体,实际上还有PDType1Font，PDType3Font，一般ttf就用PDType0Font足以</span></div><div class="line">			PDFont ttfFont= PDType0Font.load(document, <span class="keyword">new</span> File(<span class="string">"/temp/fonts/Dengl.ttf"</span>));</div><div class="line">			</div><div class="line">			<span class="comment">//otf字体</span></div><div class="line">			OTFParser otfParser = <span class="keyword">new</span> OTFParser();</div><div class="line">            OpenTypeFont otf = otfParser.parse(PdfGenerate.class.getResourceAsStream(<span class="string">"/template/copyright.otf"</span>));</div><div class="line">            PDType0Font otfFont = PDType0Font.load(document,otf, <span class="keyword">false</span>);</div><div class="line">			</div><div class="line">			</div><div class="line">            <span class="comment">/* 设置全局默认字体 或某个页面设置字体：实例化字体对象了之后，将它添加到PDPage的Resource中。</span></div><div class="line"><span class="comment">			PDPage page= new PDPage(PDRectangle.A4);</span></div><div class="line"><span class="comment">			page.getResources().add(ttfFont);*/</span></div><div class="line">            PDResources resources = <span class="keyword">new</span> PDResources();</div><div class="line">			<span class="comment">//字体名称跟模板中设置的有关</span></div><div class="line">            resources.put(COSName.getPDFName(<span class="string">"AdobeSongStd-Light"</span>), otfFont);</div><div class="line">            resources.put(COSName.getPDFName(<span class="string">"F4"</span>), otfFont);</div><div class="line">            form.setDefaultResources(resources);</div><div class="line">			</div><div class="line">			</div><div class="line">			<span class="comment">//可设置单个表单属性的字体及格式			</span></div><div class="line">            String otffont_name = form.getDefaultResources().add(otfFont).getName();</div><div class="line">			</div><div class="line">			<span class="comment">//4. 遍历表单属性并填充值</span></div><div class="line">			List&lt;PDField&gt; fields = document.getDocumentCatalog().getAcroForm().getFields();</div><div class="line">			<span class="keyword">for</span> (PDField field : fields) &#123;</div><div class="line">				<span class="keyword">if</span> (<span class="string">"qr_code"</span>.equals(field.getFullyQualifiedName()))&#123;</div><div class="line">                    setImgField(document, field, certImg.get(<span class="string">"qr_code"</span>),<span class="number">1</span>);</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"pro_file1"</span>.equals(field.getFullyQualifiedName()))&#123;</div><div class="line">                    setImgField(document, field, certImg.get(<span class="string">"pro_file1"</span>),<span class="number">1</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">					PDTextField textField = (PDTextField) field;</div><div class="line">					</div><div class="line">					<span class="keyword">if</span>(<span class="string">"name"</span>.equals(field.getFullyQualifiedName())&#123;</div><div class="line">						<span class="comment">//设置字体 字号</span></div><div class="line">						textField.setDefaultAppearance(String.format(<span class="string">"/%s 16 Tf 0 g"</span>, font_name));</div><div class="line">					&#125;</div><div class="line">					</div><div class="line">					<span class="keyword">if</span>(<span class="string">"authors"</span>.equals(field.getFullyQualifiedName())&#123;</div><div class="line">						<span class="comment">//修改位置</span></div><div class="line">						PDAnnotationWidget widget = textField.getWidgets().get(<span class="number">0</span>);</div><div class="line">                        PDRectangle rect = <span class="keyword">new</span> PDRectangle(name.getLowerLeftX(),<span class="number">368.15F</span>,name.getWidth(),name.getHeight());</div><div class="line">                        widget.setRectangle(rect);</div><div class="line">						<span class="comment">//设置字体 字号</span></div><div class="line">						textField.setDefaultAppearance(String.format(<span class="string">"/%s 12 Tf 0 g"</span>, font_name));</div><div class="line">					&#125;</div><div class="line">					</div><div class="line">					<span class="comment">//publish_time使用全局默认设置的字体</span></div><div class="line">					</div><div class="line">					<span class="comment">//设置值</span></div><div class="line">					<span class="keyword">if</span>(mappers.containsKey(field.getFullyQualifiedName()))&#123;</div><div class="line">						field.setValue(mappers.get(field.getFullyQualifiedName()));</div><div class="line">					&#125;</div><div class="line">					<span class="comment">//设置只读，表单内容不可编辑</span></div><div class="line">                    field.setReadOnly(<span class="keyword">true</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="comment">//5. 保持pdf文件</span></div><div class="line">			document.save(outPath);</div><div class="line">			<span class="comment">//最后需要关闭它</span></div><div class="line">			document.close();</div><div class="line">		&#125;<span class="keyword">catch</span>(IOException)&#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">if</span>(in!=<span class="keyword">null</span>)&#123;</div><div class="line">				in.close();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * 处理图片 </span></div><div class="line"><span class="comment">	*/</span></div><div class="line">	 <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setImgField</span><span class="params">(PDDocument document, PDField field, String filePath, <span class="keyword">int</span> pageIndex)</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">        File imageFile = <span class="keyword">new</span> File(filePath);</div><div class="line">        <span class="keyword">if</span> (imageFile.exists())&#123;</div><div class="line">            <span class="comment">/*</span></div><div class="line"><span class="comment">             * BufferedImage bufferedImage = ImageIO.read(imageFile);</span></div><div class="line"><span class="comment">             * PDImageXObject pdImageXObject = LosslessFactory.createFromImage(document, bufferedImage);</span></div><div class="line"><span class="comment">             */</span></div><div class="line">            PDImageXObject image = PDImageXObject.createFromFile(filePath, document);</div><div class="line">            PDRectangle rectangle = getFieldArea(field);</div><div class="line">            <span class="comment">//float size = rectangle.getHeight();</span></div><div class="line">            <span class="keyword">float</span> x = rectangle.getLowerLeftX();</div><div class="line">            <span class="keyword">float</span> y = rectangle.getLowerLeftY();</div><div class="line">            <span class="keyword">float</span> imageHeight = image.getHeight();</div><div class="line">            <span class="keyword">float</span> imageWidth = image.getWidth();</div><div class="line">            <span class="keyword">float</span> signRectHeight = rectangle.getHeight(), sighRectWidth = rectangle.getWidth();</div><div class="line"></div><div class="line">            PDPageContentStream contentStream = <span class="keyword">new</span> PDPageContentStream(document, document.getPage(pageIndex), PDPageContentStream.AppendMode.APPEND, <span class="keyword">true</span>);</div><div class="line">            <span class="keyword">float</span> imgBi = imageWidth/imageHeight;</div><div class="line">            <span class="keyword">float</span> signBi = sighRectWidth/signRectHeight;</div><div class="line">            <span class="keyword">float</span> margin = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (imgBi &gt; signBi)&#123;</div><div class="line">                <span class="keyword">float</span> recHeight = sighRectWidth*imageHeight/imageWidth;</div><div class="line">                margin = (signRectHeight-recHeight)/<span class="number">2</span>;</div><div class="line">                contentStream.drawImage(image, x, y + margin, sighRectWidth, recHeight);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="keyword">float</span> recWidth = signRectHeight*imageWidth/imageHeight;</div><div class="line">                margin = (sighRectWidth - recWidth)/<span class="number">2</span>;</div><div class="line">                contentStream.drawImage(image, x + margin, y,recWidth, signRectHeight);</div><div class="line">            &#125;</div><div class="line">            contentStream.close();</div><div class="line">            field.setReadOnly(<span class="keyword">true</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            System.err.println(<span class="string">"File "</span> + filePath + <span class="string">" not found"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * 获取文字坐标</span></div><div class="line"><span class="comment">	*/</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> PDRectangle <span class="title">getFieldArea</span><span class="params">(PDField field)</span> </span>&#123;</div><div class="line">        COSDictionary fieldDict = field.getCOSObject();</div><div class="line">        COSArray fieldAreaArray = (COSArray) fieldDict.getDictionaryObject(COSName.RECT);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PDRectangle(fieldAreaArray);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/12/26/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-12-26T22:17:00+08:00" content="2019-12-26">
+              2019-12-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/12/26/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/12/26/hello-world/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-serv"><a href="#Run-serv" class="headerlink" title="Run serv"></a>Run serv</h3><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/01/16/财务管理基础·第8版/" itemprop="url">
                   《财务管理基础·第8版》
                 </a>
@@ -374,6 +642,151 @@
 <li>公司面对不同货币所产生的各种特殊问题</li>
 </ul>
 <h3 id="第23章-期权"><a href="#第23章-期权" class="headerlink" title="第23章 期权"></a>第23章 期权</h3><h3 id="第24章-风险管理"><a href="#第24章-风险管理" class="headerlink" title="第24章 风险管理"></a>第24章 风险管理</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/11/30/国富论-名词解释/" itemprop="url">
+                  读书笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-11-30T07:40:14+08:00" content="2018-11-30">
+              2018-11-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/11/30/国富论-名词解释/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/30/国富论-名词解释/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="国富论·名词解释"><a href="#国富论·名词解释" class="headerlink" title="国富论·名词解释"></a>国富论·名词解释</h1><hr>
+<p>[TOC]</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="国民每年劳动-本国劳动的直接产物或用这类产物从外国购进来的物品"><a href="#国民每年劳动-本国劳动的直接产物或用这类产物从外国购进来的物品" class="headerlink" title="国民每年劳动(本国劳动的直接产物或用这类产物从外国购进来的物品)"></a>国民每年劳动<code>(本国劳动的直接产物或用这类产物从外国购进来的物品)</code></h3><blockquote>
+<p>定义</p>
+</blockquote>
+<p>供给他们每年消费的一切<strong>生活必需品和便利品</strong>的源泉。（或是本国劳动的直接产物，或是用这类产物从外国购进来的物品）</p>
+<h3 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h3><blockquote>
+<ul>
+<li>价值一词有二个不同的意义。</li>
+</ul>
+</blockquote>
+<p>它有时表示特定物品的效用，有时又表示由于占有某物而取得的对他种货物的购买力。前者可叫做使用价值，后者可叫做交 换价值。</p>
+<p>使用价值很大的东西，往往具有极小的交 换价值，甚或没有；反之，交 换价值很大的东西，往往具有极小的使用价值，甚或没有。</p>
+<blockquote>
+<ul>
+<li>物品的真实价格：即要取得这物品实际上所付出的代价，乃是获得它的辛苦和麻烦</li>
+</ul>
+<ul>
+<li>劳动是第一性价格，是最初用以购买一切货物的代价。</li>
+</ul>
+</blockquote>
+<p>世间一切财富，原来都是用劳动购买而不是用金银购买的</p>
+<blockquote>
+<ul>
+<li><p>劳动真实价格，就是报酬劳动的一定数量的生活必需品和便利品。</p>
+</li>
+<li><p>劳动名义价格，就是报酬劳动的一定数量的货币。</p>
+</li>
+<li><p>劳动的自然价格的价格出售</p>
+</li>
+</ul>
+</blockquote>
+<p>一种商品价格，如果不多不少恰恰等于生产、制造这商品乃至运送这商品到市场所使用的按自然率支付的地租、工资和利润。</p>
+<p>出卖的价格，恰恰相当于其价值，或者说，恰恰相当于出售这商品的人实际上所花的费用。</p>
+<blockquote>
+<ul>
+<li><p>商品的市场价格：商品通常出卖的实际价格</p>
+</li>
+<li><p>有效需求者：愿支付商品的自然价格的人</p>
+</li>
+<li><p>劳动工资：都普遍理解为，在劳动者为一人而雇用他的资本所有者另为一人的一般情况下，劳动获得的工资</p>
+</li>
+<li></li>
+</ul>
+</blockquote>
+
           
         
       
@@ -930,151 +1343,6 @@
 </blockquote>
 <p>全无常俸的律师和医师这些职业说，如果也有那么多的人由公费教育，那末这些职业上的竞争，不久就变得非常激烈，大大削减他们金钱上的报酬。这样一来，以自费教育子弟，从事这些职业，就不值得。</p>
 <p>这些职业，将完全由公共慈善团 体所培养的人士充当。他们人数众多而且贫穷，一般都满足于极微薄的报酬。结果，律师和医师这些职业，就不能象现在那样受尊重。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/11/30/国富论-名词解释/" itemprop="url">
-                  读书笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-11-30T07:40:14+08:00" content="2018-11-30">
-              2018-11-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/11/30/国富论-名词解释/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/30/国富论-名词解释/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="国富论·名词解释"><a href="#国富论·名词解释" class="headerlink" title="国富论·名词解释"></a>国富论·名词解释</h1><hr>
-<p>[TOC]</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="国民每年劳动-本国劳动的直接产物或用这类产物从外国购进来的物品"><a href="#国民每年劳动-本国劳动的直接产物或用这类产物从外国购进来的物品" class="headerlink" title="国民每年劳动(本国劳动的直接产物或用这类产物从外国购进来的物品)"></a>国民每年劳动<code>(本国劳动的直接产物或用这类产物从外国购进来的物品)</code></h3><blockquote>
-<p>定义</p>
-</blockquote>
-<p>供给他们每年消费的一切<strong>生活必需品和便利品</strong>的源泉。（或是本国劳动的直接产物，或是用这类产物从外国购进来的物品）</p>
-<h3 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h3><blockquote>
-<ul>
-<li>价值一词有二个不同的意义。</li>
-</ul>
-</blockquote>
-<p>它有时表示特定物品的效用，有时又表示由于占有某物而取得的对他种货物的购买力。前者可叫做使用价值，后者可叫做交 换价值。</p>
-<p>使用价值很大的东西，往往具有极小的交 换价值，甚或没有；反之，交 换价值很大的东西，往往具有极小的使用价值，甚或没有。</p>
-<blockquote>
-<ul>
-<li>物品的真实价格：即要取得这物品实际上所付出的代价，乃是获得它的辛苦和麻烦</li>
-</ul>
-<ul>
-<li>劳动是第一性价格，是最初用以购买一切货物的代价。</li>
-</ul>
-</blockquote>
-<p>世间一切财富，原来都是用劳动购买而不是用金银购买的</p>
-<blockquote>
-<ul>
-<li><p>劳动真实价格，就是报酬劳动的一定数量的生活必需品和便利品。</p>
-</li>
-<li><p>劳动名义价格，就是报酬劳动的一定数量的货币。</p>
-</li>
-<li><p>劳动的自然价格的价格出售</p>
-</li>
-</ul>
-</blockquote>
-<p>一种商品价格，如果不多不少恰恰等于生产、制造这商品乃至运送这商品到市场所使用的按自然率支付的地租、工资和利润。</p>
-<p>出卖的价格，恰恰相当于其价值，或者说，恰恰相当于出售这商品的人实际上所花的费用。</p>
-<blockquote>
-<ul>
-<li><p>商品的市场价格：商品通常出卖的实际价格</p>
-</li>
-<li><p>有效需求者：愿支付商品的自然价格的人</p>
-</li>
-<li><p>劳动工资：都普遍理解为，在劳动者为一人而雇用他的资本所有者另为一人的一般情况下，劳动获得的工资</p>
-</li>
-<li></li>
-</ul>
-</blockquote>
 
           
         
@@ -1855,265 +2123,6 @@ var_dump($val);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/11/28/Mysql实用示例/" itemprop="url">
-                  Mysql实用示例
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-28T09:40:14+08:00" content="2017-11-28">
-              2017-11-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/11/28/Mysql实用示例/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/28/Mysql实用示例/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Mysql实用示例："><a href="#Mysql实用示例：" class="headerlink" title="Mysql实用示例："></a>Mysql实用示例：</h3><blockquote>
-<p>返回id集合的字符串，用逗号隔开：<code>id1,id2,id3,...,idn</code></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT GROUP_CONCAT(id) FROM t1</div></pre></td></tr></table></figure>
-<p><strong>注意：</strong>长度超过1024时，会被截断</p>
-<blockquote>
-<p>查询某个字段出现N次的数据</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> </div><div class="line">uid,<span class="keyword">COUNT</span>(uid) <span class="keyword">AS</span> <span class="keyword">num</span> </div><div class="line"><span class="keyword">FROM</span> gzszf_meeting_notice_org_staff </div><div class="line"><span class="keyword">WHERE</span> meetingId=<span class="string">'318'</span> <span class="keyword">AND</span> isDelet=<span class="number">0</span> </div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> uid <span class="keyword">HAVING</span> <span class="keyword">num</span>&gt;N</div></pre></td></tr></table></figure>
-<blockquote>
-<p>批量插入</p>
-</blockquote>
-<ol>
-<li>数据量大的时候，先忽略掉索引，结束后再恢复，可以提高速度<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'log_bin_trust_function_creators'</span>;</div><div class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> log_bin_trust_function_creators=<span class="number">1</span>;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/11/08/何时需要Redux/" itemprop="url">
-                  何时需要Redux
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-08T23:59:29+08:00" content="2017-11-08">
-              2017-11-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/11/08/何时需要Redux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/08/何时需要Redux/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>React 只是 DOM 的一个抽象层，并不是 Web 应用的完整解决方案。有两个方面，它没涉及。</p>
-<ul>
-<li><p>代码结构</p>
-</li>
-<li><p>组件之间的通信</p>
-</li>
-</ul>
-<p>对于大型的复杂应用来说，这两方面恰恰是最关键的。因此，只用 React 没法写大型应用。</p>
-<h3 id="你可能不需要Redux"><a href="#你可能不需要Redux" class="headerlink" title="你可能不需要Redux"></a>你可能不需要Redux</h3><p>首先明确一点，Redux 是一个有用的架构，但不是非用不可。事实上，大多数情况，你可以不用它，只用 React 就够了。</p>
-<blockquote>
-<p>简单说，如果你的UI层非常简单，没有很多互动，Redux 就是不必要的，用了反而增加复杂性。</p>
-</blockquote>
-<ul>
-<li><p>用户的使用方式非常简单</p>
-</li>
-<li><p>用户之间没有协作</p>
-</li>
-<li><p>不需要与服务器大量交互，也没有使用 WebSocket</p>
-</li>
-<li><p>视图层（View）只从单一来源获取数据</p>
-</li>
-<li><p>[ ] 上面这些情况，都不需要使用 Redux。</p>
-</li>
-</ul>
-<blockquote>
-<p>Redux 的适用场景：多交互、多数据源。</p>
-</blockquote>
-<ul>
-<li>用户的使用方式复杂</li>
-<li>不同身份的用户有不同的使用方式（比如普通用户和管理员）</li>
-<li>多个用户之间可以协作</li>
-<li>与服务器大量交互，或者使用了WebSocket</li>
-<li>View要从多个来源获取数据</li>
-</ul>
-<blockquote>
-<p>从组件角度看，如果你的应用有以下场景，可以考虑使用 Redux。</p>
-</blockquote>
-<ul>
-<li>某个组件的状态，需要共享</li>
-<li>某个状态需要在任何地方都可以拿到</li>
-<li>一个组件需要改变全局状态</li>
-<li>一个组件需要改变另一个组件的状态</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2159,7 +2168,7 @@ var_dump($val);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2206,7 +2215,7 @@ var_dump($val);
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
